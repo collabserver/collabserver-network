@@ -1,12 +1,12 @@
 #pragma once
 
-#include "MessageTypes.h"
-#include "util/Singleton.h"
-
 #include <memory> // std::unique_ptr
 
+#include "MessageTypes.h"
+#include "utils/Singleton.h"
 
 namespace collab {
+
 
 class IMessage;
 
@@ -18,7 +18,6 @@ class IMessage;
  *
  * \author  Constantin Masson
  * \date    Nov 2017
- * \since   0.1.0
  */
 class MessageFactory : private Singleton<MessageFactory> {
     // Use for singleton
@@ -46,3 +45,5 @@ class MessageFactory : private Singleton<MessageFactory> {
 
 
 } // End namespace
+
+

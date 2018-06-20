@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace collab {
 
 
@@ -13,7 +12,6 @@ namespace collab {
  *
  * \author  Constantin Masson
  * \date    Nov 2017
- * \since   0.1.0
  */
 template<class M>
 class IMessageEvent {
@@ -33,3 +31,5 @@ class IMessageEvent {
 
 
 } // End namespace
+
+

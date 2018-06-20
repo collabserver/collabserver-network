@@ -1,9 +1,8 @@
 #pragma once
 
-#include "MessageTypes.h"
-
 #include <sstream>
 
+#include "MessageTypes.h"
 
 namespace collab {
 
@@ -13,7 +12,6 @@ namespace collab {
  *
  * \author  Constantin Masson
  * \date    Nov 2017
- * \since   0.1.0
  */
 class IMessage {
     protected:
@@ -21,7 +19,9 @@ class IMessage {
     public:
         virtual ~IMessage() = default;
 
+
     public:
+
         /**
          * Serialize the message in internal packed format.
          *

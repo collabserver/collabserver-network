@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace collab {
 
 
@@ -9,7 +8,6 @@ namespace collab {
  *
  * \author  Constantin Masson
  * \date    Nov 2017
- * \since   0.1.0
  */
 enum class MessageTypes : int {
     // Start at 1 because 0 was doing weird behavior with bit-backing types.
