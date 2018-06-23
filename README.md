@@ -1,2 +1,2 @@
-# Collab Messaging Protocol
+# Collab Common
 > Work in progress

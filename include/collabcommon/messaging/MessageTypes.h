@@ -12,14 +12,12 @@ namespace collab {
 enum class MessageTypes : int {
     // Start at 1 because 0 was doing weird behavior with bit-backing types.
 
-    // View Messages
-    VIEW_REQUEST_LOAD_BY_ID = 1,
-    VIEW_RESPONSE_LOAD_BY_ID,
 
-
-    // Internal use (TO KEEP LAST)
+    // Internal use (TO KEEP LAST): has the total number of defined messages
     COUNTER
 };
 
 
 } // End namespace
+
+
