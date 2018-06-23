@@ -3,7 +3,7 @@
 #include <memory> // std::unique_ptr
 
 #include "MessageTypes.h"
-#include "utils/Singleton.h"
+#include "collabcommon/utils/Singleton.h"
 
 namespace collab {
 
