@@ -5,7 +5,7 @@
 namespace collab {
 
 
-#define LOG std::clog
+#define LOG std::clog << "[LOG]:[" << __func__ << "@" << __LINE__ << "]: "
 
 
 } // End namespace
