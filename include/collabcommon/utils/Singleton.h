@@ -25,10 +25,6 @@ namespace collab {
  *          void destroy() override;
  * };
  * \endcode
- *
- *
- * \author  Constantin Masson
- * \date    Nov 2017
  */
 template <class T>
 class Singleton : private Uncopyable<Singleton<T>> {

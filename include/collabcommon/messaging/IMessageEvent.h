@@ -9,9 +9,6 @@ namespace collab {
  * Message may register the MessageEvent handler that is in charge to do this.
  *
  * \tparam <M> The message this event is working with.
- *
- * \author  Constantin Masson
- * \date    Nov 2017
  */
 template<class M>
 class IMessageEvent {

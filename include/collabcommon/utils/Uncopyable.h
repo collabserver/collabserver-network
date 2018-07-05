@@ -14,10 +14,6 @@ namespace collab {
  *     // Your code
  * };
  * \endcode
- *
- *
- * \author  Constantin Masson
- * \date    Nov 2017
  */
 template <class T>
 class Uncopyable {

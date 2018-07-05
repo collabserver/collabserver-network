@@ -15,9 +15,6 @@ class IMessage;
  * Factory for messages.
  * Each message has a special ID.
  * Factory may return the specific message implementation from its ID.
- *
- * \author  Constantin Masson
- * \date    Nov 2017
  */
 class MessageFactory : private Singleton<MessageFactory> {
     // Use for singleton

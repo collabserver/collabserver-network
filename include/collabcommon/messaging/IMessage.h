@@ -9,9 +9,6 @@ namespace collab {
 
 /**
  * Interface for network Messages.
- *
- * \author  Constantin Masson
- * \date    Nov 2017
  */
 class IMessage {
     protected:
