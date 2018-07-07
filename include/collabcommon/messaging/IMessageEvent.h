@@ -8,7 +8,7 @@ namespace collab {
  * Incoming message may start a callback function in order to process it.
  * Message may register the MessageEvent handler that is in charge to do this.
  *
- * \tparam <M> The message this event is working with.
+ * \tparam M The message this event is working with.
  */
 template<class M>
 class IMessageEvent {
