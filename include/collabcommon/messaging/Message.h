@@ -2,19 +2,20 @@
 
 #include <sstream>
 
-#include "MessageTypes.h"
-
 namespace collab {
 
 
 /**
+ * \brief
  * Interface for network Messages.
  */
-class IMessage {
+class Message {
     protected:
-        IMessage() = default;
+        Message() = default;
+        Message(const Message& other) = default;
+        Message& operator=(const Message& other) = default;
     public:
-        virtual ~IMessage() = default;
+        virtual ~Message() = default;
 
 
     public:
@@ -25,7 +26,7 @@ class IMessage {
          * \param buffer Where to place serialized data.
          * \return True if successfully serialized, otherwise, return false.
          */
-        virtual bool serialize(std::stringstream & buffer) const = 0;
+        virtual bool serialize(std::stringstream& buffer) const = 0;
 
         /**
          * Unserialize the message from its internal packed format.
@@ -33,20 +34,14 @@ class IMessage {
          * \param buffer Where to place unserialized data.
          * \return True if successfully unserialized, otherwise, return false.
          */
-        virtual bool unserialize(std::stringstream & buffer) = 0;
-
-        /**
-         * Apply the event registered for this message.
-         * This is usually the function to call whenever message is received.
-         */
-        virtual void apply() = 0;
+        virtual bool unserialize(std::stringstream& buffer) = 0;
 
         /**
          * Get the message type ID. (From enum).
          *
          * \return Type of the message.
          */
-        virtual MessageTypes getType() const = 0;
+        virtual int getType() const = 0;
 };
 
 

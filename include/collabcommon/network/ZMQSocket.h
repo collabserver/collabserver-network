@@ -10,7 +10,7 @@ namespace collab {
 
 
 class MessageFactory;
-class IMessage;
+class Message;
 
 
 struct ZMQSocketConfig {
@@ -62,13 +62,15 @@ class ZMQSocket {
          *
          * \param msg The message to send.
          */
-        void sendMessage(const IMessage& msg);
+        void sendMessage(const Message& msg);
 
         /**
          * Wait until receive a message from this socket.
-         * This is blocking.
+         * This is blocking until a message is received.
+         *
+         * \return Received message.
          */
-        std::unique_ptr<IMessage> receiveMessage();
+        std::unique_ptr<Message> receiveMessage();
 };
 
 

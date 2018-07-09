@@ -3,12 +3,11 @@
 #include <memory> // std::unique_ptr
 
 #include "collabcommon/utils/Singleton.h"
-#include "MessageTypes.h"
 
 namespace collab {
 
 
-class IMessage;
+class Message;
 
 
 /**
@@ -17,16 +16,35 @@ class IMessage;
  * Factory may return the specific message implementation from its ID.
  */
 class MessageFactory : private Singleton<MessageFactory> {
+    // -------------------------------------------------------------------------
+    // Message types
+    // -------------------------------------------------------------------------
+    public:
+        enum Type : int {
+            DEBUG_MSG,
+
+            // Internal use (TO KEEP LAST).
+            // Has the total number of defined messages
+            _COUNTER
+        };
+
+
+    // -------------------------------------------------------------------------
+    // Init
+    // -------------------------------------------------------------------------
+
     private:
         friend Singleton<MessageFactory>;
     public:
         using Singleton<MessageFactory>::getInstance;
-
-
     protected:
         MessageFactory() = default;
         ~MessageFactory() = default;
 
+
+    // -------------------------------------------------------------------------
+    // Factory methods
+    // -------------------------------------------------------------------------
 
     public:
 
@@ -37,7 +55,7 @@ class MessageFactory : private Singleton<MessageFactory> {
          * \param type  ID of the message type to create.
          * \return      Smart pointer to the new created Message.
          */
-        std::unique_ptr<IMessage> newMessage(const MessageTypes type) const;
+        std::unique_ptr<Message> newMessage(const int type) const;
 };
 
 

@@ -3,7 +3,7 @@
 #include <zmq.hpp>
 
 #include "collabcommon/messaging/MessageFactory.h"
-#include "collabcommon/messaging/IMessage.h"
+#include "collabcommon/messaging/Message.h"
 
 namespace collab {
 
@@ -61,7 +61,7 @@ static size_t _calculStreamSize(std::stringstream & stream) {
     return size;
 }
 
-void ZMQSocket::sendMessage(const IMessage& msg) {
+void ZMQSocket::sendMessage(const Message& msg) {
     std::stringstream buffer;
     msg.serialize(buffer);
 
@@ -78,7 +78,7 @@ void ZMQSocket::sendMessage(const IMessage& msg) {
     _socket->send(request);
 }
 
-std::unique_ptr<IMessage> ZMQSocket::receiveMessage() {
+std::unique_ptr<Message> ZMQSocket::receiveMessage() {
     zmq::message_t request_msg;
     _socket->recv(&request_msg);
 
@@ -88,8 +88,7 @@ std::unique_ptr<IMessage> ZMQSocket::receiveMessage() {
     const char*     msgData = msg + 1;
     const size_t    msgSize = size - 1;
 
-    MessageTypes    type    = static_cast<MessageTypes>(msgType);
-    std::unique_ptr<IMessage> m = _factory->newMessage(type);
+    std::unique_ptr<Message> m = _factory->newMessage(msgType);
     assert(m != nullptr);
     if(m == nullptr) {
         return nullptr;
