@@ -18,7 +18,6 @@
 
 
 ## Build instructions
-
 ### Build static lib with CMake
 ```bash
 # Build manually
