@@ -1,25 +1,60 @@
 #include "collabcommon/network/ZMQSocket.h"
 
+#include <zmq.hpp>
+
 #include "collabcommon/messaging/MessageFactory.h"
 #include "collabcommon/messaging/IMessage.h"
 
 namespace collab {
-namespace network {
 
 
-ZMQSocket::ZMQSocket(zmq::context_t& context, MessageFactory& factory) {
-    _context = &context;
-    _factory = &factory;
-    _socket = new zmq::socket_t(*_context, ZMQ_REP); // TODO tmp
+// -----------------------------------------------------------------------------
+// Init
+// -----------------------------------------------------------------------------
+
+ZMQSocket::ZMQSocket(ZMQSocketConfig& config) {
+    _context    = config.zmqContext;
+    _factory    = config.factory;
+    _socket     = new zmq::socket_t(*_context, config.zmqPattern);
 }
 
 ZMQSocket::~ZMQSocket() {
     delete _socket;
 }
 
-// Internal use. Get size of stream
+
+// -----------------------------------------------------------------------------
+// Connection / Binding
+// -----------------------------------------------------------------------------
+
+void ZMQSocket::bind(const char* hostname, const uint16_t port) {
+    // TODO TMP VALUES
+    _socket->bind("tcp://*:5555"); // TMP
+}
+
+void ZMQSocket::unbind() {
+    // TODO TMP VALUES
+    _socket->unbind("tcp://*:5555"); // TMP
+}
+
+void ZMQSocket::connect(const char* hostname, const uint16_t port) {
+    // TODO TMP VALUES
+    _socket->connect("tcp://localhost:5555"); // TMP
+}
+
+void ZMQSocket::disconnect() {
+    // TODO TMP VALUES
+    _socket->disconnect("tcp://localhost:5555"); // TMP
+}
+
+
+// -----------------------------------------------------------------------------
+// Message methods
+// -----------------------------------------------------------------------------
+
+// Internal use: calculate size of stream
 static size_t _calculStreamSize(std::stringstream & stream) {
-    // TODO: There might be a better way to do that!
+    // TODO: There might be a way better way to do that!
     stream.seekg(0, std::ios::end);
     const size_t size = stream.tellg();
     stream.seekg(0);
@@ -67,6 +102,6 @@ std::unique_ptr<IMessage> ZMQSocket::receiveMessage() {
 }
 
 
-}} // End namespace
+} // End namespace
 
 

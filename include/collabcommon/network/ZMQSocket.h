@@ -1,20 +1,27 @@
 #pragma once
 
+#include <string>
 #include <memory> // std::unique_ptr
-#include <zmq.hpp>
+#include <cstdint>
 
+namespace zmq { class context_t; class socket_t; }
 
 namespace collab {
+
 
 class MessageFactory;
 class IMessage;
 
-namespace network {
+
+struct ZMQSocketConfig {
+    int             zmqPattern;
+    zmq::context_t* zmqContext;
+    MessageFactory* factory;
+};
 
 
 /**
  * ZeroMQ Socket.
- *
  * TODO Documentation
  */
 class ZMQSocket {
@@ -22,10 +29,32 @@ class ZMQSocket {
         zmq::context_t*     _context;
         zmq::socket_t*      _socket;
         MessageFactory*     _factory;
+        std::string         _hostname;
+        uint16_t            _port;
 
     public:
-        ZMQSocket(zmq::context_t& context, MessageFactory& factory);
+
+        ZMQSocket(ZMQSocketConfig& config);
         ~ZMQSocket();
+
+    public:
+
+        // ---------------------------------------------------------------------
+        // Connection / Binding
+        // ---------------------------------------------------------------------
+
+        void bind(const char* hostname, const uint16_t port);
+
+        void unbind();
+
+        void connect(const char* hostname, const uint16_t port);
+
+        void disconnect();
+
+
+        // ---------------------------------------------------------------------
+        // Message methods
+        // ---------------------------------------------------------------------
 
         /**
          * Send a message on this socket transport.
@@ -43,6 +72,6 @@ class ZMQSocket {
 };
 
 
-}} // End namespace
+} // End namespace
 
 
