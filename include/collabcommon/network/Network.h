@@ -1,12 +1,12 @@
 #pragma once
 
-namespace zmq { class context_t; }
+#include <zmq.hpp>
 
 namespace collab {
 namespace network {
 
 
-static zmq::context_t* g_context = nullptr;
+static zmq::context_t g_context(1);
 
 
 bool initNetwork();

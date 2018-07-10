@@ -1,9 +1,11 @@
 #include "collabcommon/network/ZMQSocket.h"
 
 #include <zmq.hpp>
+#include <cassert>
 
 #include "collabcommon/messaging/MessageFactory.h"
 #include "collabcommon/messaging/Message.h"
+#include "collabcommon/network/Network.h"
 
 namespace collab {
 
@@ -13,9 +15,12 @@ namespace collab {
 // -----------------------------------------------------------------------------
 
 ZMQSocket::ZMQSocket(ZMQSocketConfig& config) {
-    _context    = config.zmqContext;
-    _factory    = config.factory;
-    _socket     = new zmq::socket_t(*_context, config.zmqPattern);
+    _context = config.zmqContext;
+    _factory = config.factory;
+    assert(_context != nullptr);
+    assert(_factory != nullptr);
+    _socket = new zmq::socket_t(*_context, config.zmqPattern);
+    assert(_socket != nullptr);
 }
 
 ZMQSocket::~ZMQSocket() {

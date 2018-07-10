@@ -1,27 +1,28 @@
 #include "collabcommon/network/Network.h"
 
-#include <zmq.hpp>
-
 namespace collab {
 namespace network {
+
+
+static bool _isInit = false;
 
 
 bool initNetwork() {
     if(isNetworkInit()) {
         return false;
     }
-    g_context = new zmq::context_t(1);
+    _isInit = true;
     return true;;
 }
 
 void shutdownNetwork() {
     if(isNetworkInit()) {
-        delete g_context;
+        _isInit = false;
     }
 }
 
 bool isNetworkInit() {
-    return g_context != nullptr;
+    return _isInit;
 }
 
 
