@@ -29,7 +29,7 @@ class ZMQSocket {
         zmq::context_t*     _context;
         zmq::socket_t*      _socket;
         MessageFactory*     _factory;
-        std::string         _hostname;
+        std::string         _address;
         uint16_t            _port;
 
     public:
@@ -43,12 +43,38 @@ class ZMQSocket {
         // Connection / Binding
         // ---------------------------------------------------------------------
 
-        void bind(const char* hostname, const uint16_t port);
+        /**
+         * Set socket port/address and start to accept incoming connections.
+         * Common bind address may be simply "*" for instance.
+         *
+         * \see http://api.zeromq.org/3-2:zmq-bind
+         * \param address   Address to be bound with the socket.
+         * \param port      Port accepting connections.
+         */
+        void bind(const char* address, const uint16_t port);
 
+        /**
+         * Stop accepting connections on this socket.
+         * bind should have been called first.
+         *
+         * \see http://api.zeromq.org/3-2:zmq-unbind
+         */
         void unbind();
 
-        void connect(const char* hostname, const uint16_t port);
+        /**
+         * Create outgoing connection from this socket.
+         *
+         * \see http://api.zeromq.org/3-2:zmq-connect
+         * \param address   Address to connect.
+         * \param port      Port to connect the distant address.
+         */
+        void connect(const char* address, const uint16_t port);
 
+        /**
+         * Disconnect this socket.
+         *
+         * \see http://api.zeromq.org/3-2:zmq-disconnect
+         */
         void disconnect();
 
 

@@ -1,7 +1,8 @@
 #include "collabcommon/network/ZMQSocket.h"
 
-#include <zmq.hpp>
 #include <cassert>
+#include <sstream>
+#include <zmq.hpp>
 
 #include "collabcommon/messaging/MessageFactory.h"
 #include "collabcommon/messaging/Message.h"
@@ -32,24 +33,38 @@ ZMQSocket::~ZMQSocket() {
 // Connection / Binding
 // -----------------------------------------------------------------------------
 
-void ZMQSocket::bind(const char* hostname, const uint16_t port) {
-    // TODO TMP VALUES
-    _socket->bind("tcp://*:5555"); // TMP
+void ZMQSocket::bind(const char* address, const uint16_t port) {
+    std::stringstream endpoint;
+    endpoint << "tcp://" << address << ":" << port;
+    _socket->bind(endpoint.str());
+    _address = address;
+    _port = port;
 }
 
 void ZMQSocket::unbind() {
-    // TODO TMP VALUES
-    _socket->unbind("tcp://*:5555"); // TMP
+    std::stringstream endpoint;
+    endpoint << "tcp://" << _address << ":" << _port;
+    std::string endpoint_copy = endpoint.str();
+    zmq_unbind(_socket, endpoint_copy.c_str()); // TODO TMP
+    _address = "";
+    _port = 0;
 }
 
-void ZMQSocket::connect(const char* hostname, const uint16_t port) {
-    // TODO TMP VALUES
-    _socket->connect("tcp://localhost:5555"); // TMP
+void ZMQSocket::connect(const char* address, const uint16_t port) {
+    std::stringstream endpoint;
+    endpoint << "tcp://" << address << ":" << port;
+    _socket->connect(endpoint.str());
+    _address = address;
+    _port = port;
 }
 
 void ZMQSocket::disconnect() {
-    // TODO TMP VALUES
-    _socket->disconnect("tcp://localhost:5555"); // TMP
+    std::stringstream endpoint;
+    endpoint << "tcp://" << _address << ":" << _port;
+    std::string endpoint_copy = endpoint.str();
+    zmq_disconnect(_socket, endpoint_copy.c_str());
+    _address = "";
+    _port = 0;
 }
 
 
