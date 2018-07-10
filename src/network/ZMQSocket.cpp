@@ -1,7 +1,7 @@
 #include "collabcommon/network/ZMQSocket.h"
 
 #include <cassert>
-#include <sstream>
+#include <cstring>
 #include <zmq.hpp>
 
 #include "collabcommon/messaging/MessageFactory.h"
@@ -34,37 +34,47 @@ ZMQSocket::~ZMQSocket() {
 // -----------------------------------------------------------------------------
 
 void ZMQSocket::bind(const char* address, const uint16_t port) {
-    std::stringstream endpoint;
-    endpoint << "tcp://" << address << ":" << port;
-    _socket->bind(endpoint.str());
-    _address = address;
-    _port = port;
+    assert(address != nullptr);
+    if(address == nullptr) { return; }
+    size_t size = strlen(address) + 13; //13 because tcp:// + port size + \0
+    char endpoint[size];
+    snprintf(endpoint, size, "tcp://%s:%d", address, port);
+    if(zmq_bind(_socket, endpoint) == 0) {
+        _address = address;
+        _port = port;
+    }
 }
 
 void ZMQSocket::unbind() {
-    std::stringstream endpoint;
-    endpoint << "tcp://" << _address << ":" << _port;
-    std::string endpoint_copy = endpoint.str();
-    zmq_unbind(_socket, endpoint_copy.c_str()); // TODO TMP
-    _address = "";
-    _port = 0;
+    size_t size = strlen(_address.c_str()) + 13;
+    char endpoint[size];
+    snprintf(endpoint, size, "tcp://%s:%d", _address.c_str(), _port);
+    if(zmq_unbind(_socket, endpoint) == 0) {
+        _address.clear();
+        _port = 0;
+    }
 }
 
 void ZMQSocket::connect(const char* address, const uint16_t port) {
-    std::stringstream endpoint;
-    endpoint << "tcp://" << address << ":" << port;
-    _socket->connect(endpoint.str());
-    _address = address;
-    _port = port;
+    assert(address != nullptr);
+    if(address == nullptr) { return; }
+    size_t size = strlen(address) + 13;
+    char endpoint[size];
+    snprintf(endpoint, size, "tcp://%s:%d", address, port);
+    if(zmq_connect(_socket, endpoint) == 0) {
+        _address = address;
+        _port = port;
+    }
 }
 
 void ZMQSocket::disconnect() {
-    std::stringstream endpoint;
-    endpoint << "tcp://" << _address << ":" << _port;
-    std::string endpoint_copy = endpoint.str();
-    zmq_disconnect(_socket, endpoint_copy.c_str());
-    _address = "";
-    _port = 0;
+    size_t size = strlen(_address.c_str()) + 13;
+    char endpoint[size];
+    snprintf(endpoint, size, "tcp://%s:%d", _address.c_str(), _port);
+    if(zmq_disconnect(_socket, endpoint) == 0) {
+        _address = "";
+        _port = 0;
+    }
 }
 
 
