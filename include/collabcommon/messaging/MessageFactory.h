@@ -21,7 +21,9 @@ class MessageFactory : private Singleton<MessageFactory> {
     // -------------------------------------------------------------------------
     public:
         enum Type : int {
-            DEBUG_MSG,
+            MSG_DEBUG,              // Simple msg for debug and test
+            MSG_ROOM_OPERATION,     // Msg with an operation in a room
+
 
             // Internal use (TO KEEP LAST).
             // Has the total number of defined messages

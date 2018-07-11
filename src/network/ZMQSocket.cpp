@@ -109,24 +109,24 @@ void ZMQSocket::sendMessage(const Message& msg) {
 }
 
 std::unique_ptr<Message> ZMQSocket::receiveMessage() {
-    zmq::message_t request_msg;
-    _socket->recv(&request_msg);
+    std::unique_ptr<Message> m = nullptr;
+    while(m == nullptr) {
+        zmq::message_t request_msg;
+        _socket->recv(&request_msg);
 
-    char*           msg     = static_cast<char*>(request_msg.data());
-    const int       size    = request_msg.size();
-    const int       msgType = static_cast<int>(msg[0]);
-    const char*     msgData = msg + 1;
-    const size_t    msgSize = size - 1;
+        char*           msg     = static_cast<char*>(request_msg.data());
+        const int       size    = request_msg.size();
+        const int       msgType = static_cast<int>(msg[0]);
+        const char*     msgData = msg + 1;
+        const size_t    msgSize = size - 1;
 
-    std::unique_ptr<Message> m = _factory->newMessage(msgType);
-    assert(m != nullptr);
-    if(m == nullptr) {
-        return nullptr;
+        m = _factory->newMessage(msgType);
+        assert(msg != nullptr);
+
+        std::stringstream stream;
+        stream.str(std::string(msgData, msgSize));
+        m->unserialize(stream);
     }
-
-    std::stringstream stream;
-    stream.str(std::string(msgData, msgSize));
-    m->unserialize(stream);
     return m;
 }
 

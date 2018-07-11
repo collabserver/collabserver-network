@@ -21,8 +21,8 @@ struct ZMQSocketConfig {
 
 
 /**
- * ZeroMQ Socket.
- * TODO Documentation
+ * \brief
+ * Abstraction of a ZeroMQ socket.
  */
 class ZMQSocket {
     private:
