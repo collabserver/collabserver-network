@@ -25,7 +25,7 @@ class MsgRoomOperation : public Message {
         }
 
         int getType() const override {
-            return MessageFactory::MSG_DEBUG;
+            return MessageFactory::MSG_ROOM_OPERATION;
         }
 };
 
