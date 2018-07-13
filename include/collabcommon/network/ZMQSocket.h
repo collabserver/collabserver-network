@@ -3,6 +3,7 @@
 #include <string>
 #include <memory> // std::unique_ptr
 #include <cstdint>
+#include <zmq.hpp> // Required in header for ZMQ patterns constants
 
 namespace zmq { class context_t; class socket_t; }
 
@@ -50,16 +51,18 @@ class ZMQSocket {
          * \see http://api.zeromq.org/3-2:zmq-bind
          * \param address   Address to be bound with the socket.
          * \param port      Port accepting connections.
+         * \return          True if successfully bind, false otherwise.
          */
-        void bind(const char* address, const uint16_t port);
+        bool bind(const char* address, const uint16_t port);
 
         /**
          * Stop accepting connections on this socket.
          * bind should have been called first.
          *
          * \see http://api.zeromq.org/3-2:zmq-unbind
+         * \return True if successfully unbind, false otherwise.
          */
-        void unbind();
+        bool unbind();
 
         /**
          * Create outgoing connection from this socket.
@@ -67,15 +70,17 @@ class ZMQSocket {
          * \see http://api.zeromq.org/3-2:zmq-connect
          * \param address   Address to connect.
          * \param port      Port to connect the distant address.
+         * \return          True if successfully connected, false otherwise.
          */
-        void connect(const char* address, const uint16_t port);
+        bool connect(const char* address, const uint16_t port);
 
         /**
          * Disconnect this socket.
          *
          * \see http://api.zeromq.org/3-2:zmq-disconnect
+         * \return True if successfully disconnected, false otherwise.
          */
-        void disconnect();
+        bool disconnect();
 
 
         // ---------------------------------------------------------------------
