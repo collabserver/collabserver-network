@@ -17,13 +17,14 @@ namespace collab {
 ZMQSocket::ZMQSocket(ZMQSocketConfig& config) {
     _context = config.zmqContext;
     _factory = config.factory;
+    _socket  = new zmq::socket_t(*_context, config.zmqPattern);
     assert(_context != nullptr);
     assert(_factory != nullptr);
-    _socket = new zmq::socket_t(*_context, config.zmqPattern);
-    assert(_socket != nullptr);
+    assert(_socket  != nullptr);
 }
 
 ZMQSocket::~ZMQSocket() {
+    assert(_socket != nullptr);
     delete _socket;
 }
 
@@ -33,8 +34,11 @@ ZMQSocket::~ZMQSocket() {
 // -----------------------------------------------------------------------------
 
 bool ZMQSocket::bind(const char* address, const uint16_t port) {
+    assert(_socket != nullptr);
     assert(address != nullptr);
-    if(address == nullptr) { return false; }
+    if(address == nullptr) {
+        return false;
+    }
     size_t size = strlen(address) + 13; //13 because tcp:// + port size + \0
     char endpoint[size];
     snprintf(endpoint, size, "tcp://%s:%d", address, port);
@@ -47,6 +51,7 @@ bool ZMQSocket::bind(const char* address, const uint16_t port) {
 }
 
 bool ZMQSocket::unbind() {
+    assert(_socket != nullptr);
     size_t size = strlen(_address.c_str()) + 13;
     char endpoint[size];
     snprintf(endpoint, size, "tcp://%s:%d", _address.c_str(), _port);
@@ -59,8 +64,11 @@ bool ZMQSocket::unbind() {
 }
 
 bool ZMQSocket::connect(const char* address, const uint16_t port) {
+    assert(_socket != nullptr);
     assert(address != nullptr);
-    if(address == nullptr) { return false; }
+    if(address == nullptr) {
+        return false;
+    }
     size_t size = strlen(address) + 13;
     char endpoint[size];
     snprintf(endpoint, size, "tcp://%s:%d", address, port);
@@ -73,6 +81,7 @@ bool ZMQSocket::connect(const char* address, const uint16_t port) {
 }
 
 bool ZMQSocket::disconnect() {
+    assert(_socket != nullptr);
     size_t size = strlen(_address.c_str()) + 13;
     char endpoint[size];
     snprintf(endpoint, size, "tcp://%s:%d", _address.c_str(), _port);

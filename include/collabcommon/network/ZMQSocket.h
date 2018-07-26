@@ -1,11 +1,9 @@
 #pragma once
 
+#include <cstdint>
 #include <string>
 #include <memory> // std::unique_ptr
-#include <cstdint>
-#include <zmq.hpp> // Required in header for ZMQ patterns constants
-
-namespace zmq { class context_t; class socket_t; }
+#include <zmq.hpp>
 
 namespace collab {
 
