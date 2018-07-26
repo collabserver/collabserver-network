@@ -5,7 +5,6 @@
 
 #include "collabcommon/messaging/MessageFactory.h"
 #include "collabcommon/messaging/Message.h"
-#include "collabcommon/network/Network.h"
 
 namespace collab {
 

@@ -7,9 +7,10 @@
 
 namespace collab {
 
-
 class MessageFactory;
 class Message;
+
+static zmq::context_t g_context(1);
 
 
 struct ZMQSocketConfig {
