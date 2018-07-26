@@ -32,64 +32,50 @@ ZMQSocket::~ZMQSocket() {
 // Connection / Binding
 // -----------------------------------------------------------------------------
 
-bool ZMQSocket::bind(const char* address, const uint16_t port) {
+void ZMQSocket::bind(const char* address, const uint16_t port) {
     assert(_socket != nullptr);
     assert(address != nullptr);
-    if(address == nullptr) {
-        return false;
-    }
-    size_t size = strlen(address) + 13; //13 because tcp:// + port size + \0
-    char endpoint[size];
-    snprintf(endpoint, size, "tcp://%s:%d", address, port);
-    if(zmq_bind(_socket, endpoint) == 0) {
+    if(address != nullptr) {
+        size_t size = strlen(address) + 13; //13 because tcp:// + port size + \0
+        char endpoint[size];
+        snprintf(endpoint, size, "tcp://%s:%d", address, port);
+        _socket->bind(endpoint);
         _address = address;
         _port = port;
-        return true;
     }
-    return false;
 }
 
-bool ZMQSocket::unbind() {
+void ZMQSocket::unbind() {
     assert(_socket != nullptr);
     size_t size = strlen(_address.c_str()) + 13;
     char endpoint[size];
     snprintf(endpoint, size, "tcp://%s:%d", _address.c_str(), _port);
-    if(zmq_unbind(_socket, endpoint) == 0) {
-        _address.clear();
-        _port = 0;
-        return true;
-    }
-    return false;
+    _socket->unbind(endpoint);
+    _address.clear();
+    _port = 0;
 }
 
-bool ZMQSocket::connect(const char* address, const uint16_t port) {
+void ZMQSocket::connect(const char* address, const uint16_t port) {
     assert(_socket != nullptr);
     assert(address != nullptr);
-    if(address == nullptr) {
-        return false;
-    }
-    size_t size = strlen(address) + 13;
-    char endpoint[size];
-    snprintf(endpoint, size, "tcp://%s:%d", address, port);
-    if(zmq_connect(_socket, endpoint) == 0) {
+    if(address != nullptr) {
+        size_t size = strlen(address) + 13; // 13 since tcp:// + port size + \0
+        char endpoint[size];
+        snprintf(endpoint, size, "tcp://%s:%d", address, port);
+        _socket->connect(endpoint);
         _address = address;
         _port = port;
-        return true;
     }
-    return false;
 }
 
-bool ZMQSocket::disconnect() {
+void ZMQSocket::disconnect() {
     assert(_socket != nullptr);
     size_t size = strlen(_address.c_str()) + 13;
     char endpoint[size];
     snprintf(endpoint, size, "tcp://%s:%d", _address.c_str(), _port);
-    if(zmq_disconnect(_socket, endpoint) == 0) {
-        _address = "";
-        _port = 0;
-        return true;
-    }
-    return false;
+    _socket->disconnect(endpoint);
+    _address = "";
+    _port = 0;
 }
 
 
