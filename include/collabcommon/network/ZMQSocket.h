@@ -5,16 +5,21 @@
 #include <memory> // std::unique_ptr
 #include <zmq.hpp>
 
+#include "collabcommon/messaging/MessageFactory.h"
+#include "collabcommon/messaging/Message.h"
+
 namespace collab {
 
-class MessageFactory;
-class Message;
 
 static zmq::context_t g_context(1);
 
 
+/**
+ * \brief
+ * Configuration for a ZMQSocket.
+ */
 struct ZMQSocketConfig {
-    int             zmqPattern;
+    int             zmqPattern; // From ZMQ constants
     zmq::context_t* zmqContext;
     MessageFactory* factory;
 };

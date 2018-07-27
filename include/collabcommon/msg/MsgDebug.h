@@ -2,8 +2,8 @@
 
 #include <string>
 
-#include "Message.h"
-#include "MessageFactory.h"
+#include "collabcommon/messaging/Message.h"
+#include "collabcommon/messaging/MessageFactory.h"
 
 namespace collab {
 

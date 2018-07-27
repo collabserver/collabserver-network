@@ -3,9 +3,6 @@
 #include <cassert>
 #include <cstring>
 
-#include "collabcommon/messaging/MessageFactory.h"
-#include "collabcommon/messaging/Message.h"
-
 namespace collab {
 
 
