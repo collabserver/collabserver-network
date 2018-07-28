@@ -1,8 +1,8 @@
 #include "collabcommon/messaging/MessageFactory.h"
 
 #include "collabcommon/messaging/Message.h"
-#include "collabcommon/messaging/MsgDebug.h"
-#include "collabcommon/messaging/MsgRoomOperation.h"
+#include "collabcommon/msg/MsgDebug.h"
+#include "collabcommon/msg/MsgRoomOperation.h"
 
 namespace collab {
 
