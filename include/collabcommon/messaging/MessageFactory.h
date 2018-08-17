@@ -3,11 +3,9 @@
 #include <memory> // std::unique_ptr
 
 #include "collabcommon/utils/Singleton.h"
+#include "collabcommon/messaging/Message.h"
 
 namespace collab {
-
-
-class Message;
 
 
 /**
@@ -23,10 +21,13 @@ class MessageFactory : private Singleton<MessageFactory> {
     // -------------------------------------------------------------------------
     public:
         enum Type : int {
-            MSG_CONNECTION_REQ,     // User connect to server (Request)
-            MSG_CONNECTION_REP,     // Server accept user connection
-            MSG_ROOM_OPERATION,     // Msg with an operation in a room
-            MSG_DEBUG,              // Simple msg for debug and test
+            MSG_CONNECTION_REQ,         // User connect to server (Request)
+            MSG_CONNECTION_SUCCESS,     // Server accept user connection
+
+            MSG_ROOM_OPERATION,         // Msg with an operation in a room
+
+            MSG_ERROR,                  // Any error msg (Using error ID)
+            MSG_DEBUG,                  // Simple msg for debug and test
 
             // Internal use (TO KEEP LAST).
             // Has the total number of defined messages

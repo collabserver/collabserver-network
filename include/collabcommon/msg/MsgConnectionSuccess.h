@@ -1,6 +1,5 @@
 #pragma once
 
-#include <string>
 #include <msgpack.hpp>
 
 #include "collabcommon/messaging/Message.h"
@@ -11,15 +10,18 @@ namespace collab {
 
 /**
  * \brief
- * Message for debug purpose
+ * Response from Connection Request
+ *
+ * Server has successfully added a new user.
+ * This message gives the created ID.
  */
-class MsgDebug : public Message {
+class MsgConnectionSuccess : public Message {
     private:
-        std::string _content;
+        int _userID; // ID the server gave to the user just connected.
 
     public:
         bool serialize(std::stringstream& buffer) const override {
-            msgpack::pack(buffer, _content);
+            msgpack::pack(buffer, _userID);
             return true;
         }
 
@@ -29,22 +31,22 @@ class MsgDebug : public Message {
 
             msgpack::unpacked r1;
             msgpack::unpack(r1, data, size);
-            r1.get().convert(_content);
+            r1.get().convert(_userID);
 
             return true;
         }
 
         int getType() const override {
-            return MessageFactory::MSG_DEBUG;
+            return MessageFactory::MSG_CONNECTION_SUCCESS;
         }
 
     public:
-        void setcontent(const std::string& str) {
-            _content = str;
+        void setUserID(const int id) {
+            _userID = id;
         }
 
-        const std::string& content() const {
-            return _content;
+        int userID() const {
+            return _userID;
         }
 };
 

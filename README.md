@@ -27,6 +27,14 @@ Common library used by both collab-server and collab-client.
 
 
 ## Build instructions
+
+### Build types
+- CMake build types (ex: `-DCMAKE_BUILD_TYPE=Debug`):
+    - Debug
+    - Release
+    - RelWithDebInfo
+    - MinSizeRel
+
 ### Build static lib with CMake
 ```bash
 # Build manually
@@ -34,6 +42,19 @@ mkdir build
 cd build
 cmake ..
 make -j4
+
+# Build from script
+./build.sh
+```
+
+### Build tests with CMake
+```bash
+# Build manually
+mkdir build
+cd build
+cmake ..
+make -j4
+make runTests
 
 # Build from script
 ./build.sh

@@ -1,6 +1,5 @@
 #pragma once
 
-#include <string>
 #include <msgpack.hpp>
 
 #include "collabcommon/messaging/Message.h"
@@ -9,17 +8,13 @@
 namespace collab {
 
 
-/**
- * \brief
- * Message for debug purpose
- */
-class MsgDebug : public Message {
+class MsgError : public Message {
     private:
-        std::string _content;
+        int _errorID;
 
     public:
         bool serialize(std::stringstream& buffer) const override {
-            msgpack::pack(buffer, _content);
+            msgpack::pack(buffer, _errorID);
             return true;
         }
 
@@ -29,26 +24,27 @@ class MsgDebug : public Message {
 
             msgpack::unpacked r1;
             msgpack::unpack(r1, data, size);
-            r1.get().convert(_content);
+            r1.get().convert(_errorID);
 
             return true;
         }
 
         int getType() const override {
-            return MessageFactory::MSG_DEBUG;
+            return MessageFactory::MSG_ERROR;
         }
 
     public:
-        void setcontent(const std::string& str) {
-            _content = str;
+        void setErrorID(const int id) {
+            _errorID = id;
         }
 
-        const std::string& content() const {
-            return _content;
+        int errorID() const {
+            return _errorID;
         }
 };
 
 
 } // End namespace
+
 
 
