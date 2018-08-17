@@ -61,6 +61,13 @@ make runTests
 ```
 
 
+## Generate documentation
+- [Doxygen](https://www.stack.nl/~dimitri/doxygen/)
+
+Generate documentation with `doxygen Doxyfile`.
+Generated files are places in `doc` folder.
+
+
 ## Author
 - Constantin Masson ([constantinmasson.com](http://constantinmasson.com/))
 
