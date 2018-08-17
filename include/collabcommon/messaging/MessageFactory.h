@@ -11,7 +11,9 @@ class Message;
 
 
 /**
- * Factory for messages.
+ * \brief
+ * Factory for CollabServer messages.
+ *
  * Each message has a special ID.
  * Factory may return the specific message implementation from its ID.
  */
@@ -21,9 +23,10 @@ class MessageFactory : private Singleton<MessageFactory> {
     // -------------------------------------------------------------------------
     public:
         enum Type : int {
-            MSG_DEBUG,              // Simple msg for debug and test
+            MSG_CONNECTION_REQ,     // User connect to server (Request)
+            MSG_CONNECTION_REP,     // Server accept user connection
             MSG_ROOM_OPERATION,     // Msg with an operation in a room
-
+            MSG_DEBUG,              // Simple msg for debug and test
 
             // Internal use (TO KEEP LAST).
             // Has the total number of defined messages

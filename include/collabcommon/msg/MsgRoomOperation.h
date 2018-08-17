@@ -1,6 +1,6 @@
 #pragma once
 
-#include <string>
+#include <msgpack.hpp>
 
 #include "collabcommon/messaging/Message.h"
 #include "collabcommon/messaging/MessageFactory.h"

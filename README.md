@@ -9,12 +9,21 @@
 
 
 ## Description
-> Work in progress
+Common library used by both collab-server and collab-client.
 
 
 ## Requirements
 - C++11
 - `pragma once` support
+- Tested only on Linux. Not support certified for Mac and Windows
+
+
+## Dependencies
+> Dependencies marked with *(CMake)* are automatically downloaded by CMake
+> script and placed in *dependencies* folder.
+> Others must be installed manually (Generally system-wide install).
+- [MessagePack](https://msgpack.org/) (CMake. Only required by Simple Graph)
+- [GoogleTest](https://github.com/google/googletest) (CMake. Only for tests)
 
 
 ## Build instructions

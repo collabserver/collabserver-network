@@ -7,9 +7,13 @@ endif()
 
 
 # ------------------------------------------------------------------------------
-# Various
+# Dependencies and Misc
 # ------------------------------------------------------------------------------
+set(collab_dependency_dir "${CMAKE_SOURCE_DIR}/dependencies/")
+
 include("CMake/AddCompilerFlags.cmake")
+include("CMake/Dependencies/AddMsgPack.cmake")
+include("CMake/Dependencies/AddGoogleTest.cmake")
 
 
 # ------------------------------------------------------------------------------
@@ -20,3 +24,15 @@ file(GLOB_RECURSE srcCommonFiles "${CMAKE_SOURCE_DIR}/src/*.cpp")
 
 add_library(collabcommon STATIC ${srcCommonFiles})
 target_link_libraries(collabcommon zmq)
+
+
+# ------------------------------------------------------------------------------
+# Tests
+# ------------------------------------------------------------------------------
+option(collab_tests "Build tests" OFF)
+
+if(collab_tests)
+    message(STATUS "Build tests")
+    include("CMake/AddTests.cmake")
+endif()
+
