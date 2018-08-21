@@ -1,9 +1,6 @@
 #pragma once
 
-#include <msgpack.hpp>
-
 #include "collabcommon/messaging/Message.h"
-#include "collabcommon/messaging/MessageFactory.h"
 
 namespace collab {
 
@@ -17,17 +14,9 @@ namespace collab {
  */
 class MsgConnectionRequest : public Message {
     public:
-        bool serialize(std::stringstream& buffer) const override {
-            return true;
-        }
-
-        bool unserialize(std::stringstream& buffer) override {
-            return true;
-        }
-
-        int getType() const override {
-            return MessageFactory::MSG_CONNECTION_REQ;
-        }
+        bool serialize(std::stringstream& buffer) const override;
+        bool unserialize(std::stringstream& buffer) override;
+        int getType() const override;
 };
 
 

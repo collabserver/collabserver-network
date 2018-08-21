@@ -2,7 +2,6 @@
 
 #include "collabcommon/messaging/Message.h"
 #include "collabcommon/msg/MsgDebug.h"
-#include "collabcommon/msg/MsgRoomOperation.h"
 
 namespace collab {
 
@@ -11,8 +10,6 @@ std::unique_ptr<Message> MessageFactory::newMessage(const int type) const {
     switch(type) {
         case MSG_DEBUG:
             return std::unique_ptr<Message>(new MsgDebug());
-        case MSG_ROOM_OPERATION:
-            return std::unique_ptr<Message>(new MsgRoomOperation());
 
 
         // ---------------------------------------------------------------------

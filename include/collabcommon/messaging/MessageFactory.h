@@ -24,8 +24,6 @@ class MessageFactory : private Singleton<MessageFactory> {
             MSG_CONNECTION_REQ,         // User connect to server (Request)
             MSG_CONNECTION_SUCCESS,     // Server accept user connection
 
-            MSG_ROOM_OPERATION,         // Msg with an operation in a room
-
             MSG_ERROR,                  // Any error msg (Using error ID)
             MSG_DEBUG,                  // Simple msg for debug and test
 
