@@ -3,8 +3,6 @@
 #include <sstream>
 #include <msgpack.hpp>
 
-#include "collabcommon/messaging/MessageFactory.h"
-
 namespace collab {
 
 
@@ -18,10 +16,6 @@ bool MsgConnectionRequest::serialize(std::stringstream& buffer) const {
 
 bool MsgConnectionRequest::unserialize(std::stringstream& buffer) {
     return true;
-}
-
-int MsgConnectionRequest::getType() const {
-    return MessageFactory::MSG_CONNECTION_REQ;
 }
 
 
@@ -45,10 +39,6 @@ bool MsgConnectionSuccess::unserialize(std::stringstream& buffer) {
     return true;
 }
 
-int MsgConnectionSuccess::getType() const {
-    return MessageFactory::MSG_CONNECTION_SUCCESS;
-}
-
 
 // -----------------------------------------------------------------------------
 // MsgDebug
@@ -70,10 +60,6 @@ bool MsgDebug::unserialize(std::stringstream& buffer) {
     return true;
 }
 
-int MsgDebug::getType() const {
-    return MessageFactory::MSG_DEBUG;
-}
-
 
 // -----------------------------------------------------------------------------
 // MsgError
@@ -93,10 +79,6 @@ bool MsgError::unserialize(std::stringstream& buffer) {
     r1.get().convert(_errorID);
 
     return true;
-}
-
-int MsgError::getType() const {
-    return MessageFactory::MSG_ERROR;
 }
 
 

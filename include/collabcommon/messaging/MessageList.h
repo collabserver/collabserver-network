@@ -1,7 +1,7 @@
 #pragma once
 
 #include "collabcommon/messaging/Message.h"
-
+#include "collabcommon/messaging/MessageFactory.h"
 
 namespace collab {
 
@@ -10,7 +10,9 @@ class MsgConnectionRequest : public Message {
     public:
         bool serialize(std::stringstream& buffer) const override;
         bool unserialize(std::stringstream& buffer) override;
-        int getType() const override;
+        int getType() const override {
+            return MessageFactory::MSG_CONNECTION_REQ;
+        }
 };
 
 class MsgConnectionSuccess : public Message {
@@ -19,9 +21,11 @@ class MsgConnectionSuccess : public Message {
     public:
         bool serialize(std::stringstream& buffer) const override;
         bool unserialize(std::stringstream& buffer) override;
-        int getType() const override;
         void setUserID(const int id) { _userID = id; }
         int userID() const { return _userID; }
+        int getType() const override {
+            return MessageFactory::MSG_CONNECTION_SUCCESS;
+        }
 };
 
 class MsgDebug : public Message {
@@ -30,9 +34,11 @@ class MsgDebug : public Message {
     public:
         bool serialize(std::stringstream& buffer) const override;
         bool unserialize(std::stringstream& buffer) override;
-        int getType() const override;
         void setcontent(const std::string& str) { _content = str; }
         const std::string& content() const { return _content; }
+        int getType() const override {
+            return MessageFactory::MSG_DEBUG;
+        }
 };
 
 class MsgError : public Message {
@@ -41,9 +47,11 @@ class MsgError : public Message {
     public:
         bool serialize(std::stringstream& buffer) const override;
         bool unserialize(std::stringstream& buffer) override;
-        int getType() const override;
         void setErrorID(const int id) { _errorID = id; }
         int errorID() const { return _errorID; }
+        int getType() const override {
+            return MessageFactory::MSG_ERROR;
+        }
 };
 
 
