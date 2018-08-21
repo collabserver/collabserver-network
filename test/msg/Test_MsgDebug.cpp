@@ -1,7 +1,7 @@
-#include "collabcommon/msg/MsgDebug.h"
+#include "collabcommon/messaging/MessageList.h"
 
-#include <gtest/gtest.h>
 #include <sstream>
+#include <gtest/gtest.h>
 
 namespace collab {
 
