@@ -106,8 +106,8 @@ void ZMQSocket::sendMessage(const Message& msg) {
     _socket->send(request);
 }
 
-std::unique_ptr<Message> ZMQSocket::receiveMessage() {
-    std::unique_ptr<Message> m = nullptr;
+Message* ZMQSocket::receiveMessage() {
+    Message* m = nullptr;
     while(m == nullptr) {
         zmq::message_t request_msg;
         _socket->recv(&request_msg);

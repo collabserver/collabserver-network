@@ -2,7 +2,6 @@
 
 #include <cstdint>
 #include <string>
-#include <memory> // std::unique_ptr
 #include <zmq.hpp>
 
 #include "collabcommon/messaging/MessageFactory.h"
@@ -123,9 +122,13 @@ class ZMQSocket {
          * Wait until receive a message from this socket.
          * This is blocking until a message is received.
          *
+         * \warning
+         * Message is created from on the head and must be free.
+         * You may use the factory freeMessage method.
+         *
          * \return Received message.
          */
-        std::unique_ptr<Message> receiveMessage();
+        Message* receiveMessage();
 };
 
 
