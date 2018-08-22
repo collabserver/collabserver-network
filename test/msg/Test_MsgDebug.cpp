@@ -15,11 +15,11 @@ TEST(MsgDebug, serializeUnserialize) {
     MsgDebug msg_resp;
 
     std::stringstream buffer;
-    msg.setcontent("Ellie");
+    msg.setContent("Ellie");
     msg.serialize(buffer);
 
     msg_resp.unserialize(buffer);
-    ASSERT_EQ(msg_resp.content(), msg.content());
+    ASSERT_EQ(msg_resp.getContent(), msg.getContent());
 }
 
 

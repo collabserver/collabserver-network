@@ -35,9 +35,9 @@ TEST(MsgConnectionSuccess, serializeUnserialize) {
     msg2_resp.unserialize(buffer2);
     msg3_resp.unserialize(buffer3);
 
-    ASSERT_EQ(msg1_resp.userID(), msg1.userID());
-    ASSERT_EQ(msg2_resp.userID(), msg2.userID());
-    ASSERT_EQ(msg3_resp.userID(), msg3.userID());
+    ASSERT_EQ(msg1_resp.getUserID(), msg1.getUserID());
+    ASSERT_EQ(msg2_resp.getUserID(), msg2.getUserID());
+    ASSERT_EQ(msg3_resp.getUserID(), msg3.getUserID());
 }
 
 
