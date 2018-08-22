@@ -19,13 +19,20 @@ class MessageFactory : private Singleton<MessageFactory> {
     // -------------------------------------------------------------------------
     public:
         enum Type : int {
-            MSG_CONNECTION_REQ,         // User connect to server (Request)
-            MSG_CONNECTION_SUCCESS,     // Server accept user connection
+            MSG_CONNECTION_REQUEST,
+            MSG_CONNECTION_SUCCESS,
+            MSG_DISCONNECT_REQUEST,
+            MSG_DISCONNECT_SUCCESS,
 
-            MSG_CREA_DATA_VOLATILE_REQ, // Create new volatile data room
+            MSG_CREA_DATA_VOLATILE_REQUEST,
+            MSG_CREA_DATA_VOLATILE_SUCCESS,
+            MSG_JOIN_DATA_REQUEST,
+            MSG_JOIN_DATA_SUCCESS,
+            MSG_LEAVE_DATA_REQUEST,
+            MSG_LEAVE_DATA_SUCCESS,
 
-            MSG_ERROR,                  // Any error msg (Using error ID)
-            MSG_DEBUG,                  // Simple msg for debug and test
+            MSG_ERROR,
+            MSG_DEBUG,
 
             // Internal use (TO KEEP LAST).
             // Has the total number of defined messages
