@@ -22,6 +22,8 @@ class MessageFactory : private Singleton<MessageFactory> {
             MSG_CONNECTION_REQ,         // User connect to server (Request)
             MSG_CONNECTION_SUCCESS,     // Server accept user connection
 
+            MSG_CREA_DATA_VOLATILE_REQ, // Create new volatile data room
+
             MSG_ERROR,                  // Any error msg (Using error ID)
             MSG_DEBUG,                  // Simple msg for debug and test
 
