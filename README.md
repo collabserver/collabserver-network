@@ -23,10 +23,13 @@ Common library used by both collab-server and collab-client.
 > script and placed in *dependencies* folder.
 > Others must be installed manually (Generally system-wide install).
 - [MessagePack](https://msgpack.org/) (CMake. Only required by Simple Graph)
+- [ZeroMQ](http://zeromq.org/) (**Must be installed system-wide**)
 - [GoogleTest](https://github.com/google/googletest) (CMake. Only for tests)
 
 
 ## Build instructions
+collab-common is compiled as an object library.
+You must also link the zmq library. (-lzmq)
 
 ### Build types
 - CMake build types (ex: `-DCMAKE_BUILD_TYPE=Debug`):
@@ -35,16 +38,13 @@ Common library used by both collab-server and collab-client.
     - RelWithDebInfo
     - MinSizeRel
 
-### Build static lib with CMake
+### Build object lib with CMake
 ```bash
 # Build manually
 mkdir build
 cd build
 cmake ..
 make -j4
-
-# Build from script
-./build.sh
 ```
 
 ### Build tests with CMake
