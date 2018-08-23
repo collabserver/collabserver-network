@@ -22,7 +22,6 @@ include_directories("${CMAKE_SOURCE_DIR}/include/")
 file(GLOB_RECURSE srcCommonFiles "${CMAKE_SOURCE_DIR}/src/*.cpp")
 
 add_library(collabcommon STATIC ${srcCommonFiles})
-target_link_libraries(collabcommon zmq)
 
 
 # ------------------------------------------------------------------------------
@@ -31,8 +30,8 @@ target_link_libraries(collabcommon zmq)
 option(collab_tests "Build tests" OFF)
 
 if(collab_tests)
-    include("CMake/Dependencies/AddGoogleTest.cmake")
     message(STATUS "Build tests")
+    include("CMake/Dependencies/AddGoogleTest.cmake")
     include("CMake/AddTests.cmake")
 endif()
 

@@ -22,11 +22,14 @@ Common library used by both collab-server and collab-client.
 > Dependencies marked with *(CMake)* are automatically downloaded by CMake
 > script and placed in *dependencies* folder.
 > Others must be installed manually (Generally system-wide install).
-- [MessagePack](https://msgpack.org/) (CMake. Only required by Simple Graph)
+- [ZeroMQ](http://zeromq.org/) (**Must be installed system-wide**)
+- [MessagePack](https://msgpack.org/) (CMake)
 - [GoogleTest](https://github.com/google/googletest) (CMake. Only for tests)
 
 
 ## Build instructions
+Collab is compiled as a static library. You must link `collab-common` and
+`zmq` to your executable to use the collab-common lib.
 
 ### Build types
 - CMake build types (ex: `-DCMAKE_BUILD_TYPE=Debug`):
@@ -42,9 +45,6 @@ mkdir build
 cd build
 cmake ..
 make -j4
-
-# Build from script
-./build.sh
 ```
 
 ### Build tests with CMake
