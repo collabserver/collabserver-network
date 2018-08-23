@@ -16,12 +16,13 @@ include("CMake/Dependencies/AddMsgPack.cmake")
 
 
 # ------------------------------------------------------------------------------
-# Object lib
+# Static lib
 # ------------------------------------------------------------------------------
 include_directories("${CMAKE_SOURCE_DIR}/include/")
 file(GLOB_RECURSE srcCommonFiles "${CMAKE_SOURCE_DIR}/src/*.cpp")
 
-add_library(collabcommon OBJECT ${srcCommonFiles})
+add_library(collabcommon STATIC ${srcCommonFiles})
+target_link_libraries(collabcommon zmq)
 
 
 # ------------------------------------------------------------------------------
