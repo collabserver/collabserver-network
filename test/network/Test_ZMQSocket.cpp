@@ -1,6 +1,7 @@
 #include "collabcommon/network/ZMQSocket.h"
 
 #include <gtest/gtest.h>
+#include "collabcommon/messaging/MessageFactory.h"
 
 namespace collab {
 
@@ -8,7 +9,7 @@ namespace collab {
 ZMQSocketConfig conf {
     ZMQ_REP,
     &g_context,
-    nullptr
+    &(MessageFactory::getInstance())
 };
 
 
