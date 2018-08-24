@@ -16,7 +16,6 @@ zmq::context_t g_context(1);
 ZMQSocket::ZMQSocket(ZMQSocketConfig& config) {
     _factory = config.factory;
     _socket  = new zmq::socket_t(g_context, config.zmqPattern);
-    assert(_context != nullptr);
     assert(_factory != nullptr);
     assert(_socket  != nullptr);
 }
