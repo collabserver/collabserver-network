@@ -65,7 +65,6 @@ bool MsgDisconnectSuccess::unserialize(std::stringstream& buffer) {
 
 bool MsgCreaDataVolatileRequest::serialize(std::stringstream& buffer) const {
     msgpack::pack(buffer, _userID);
-    msgpack::pack(buffer, _dataTypeID);
     return true;
 }
 
@@ -75,13 +74,8 @@ bool MsgCreaDataVolatileRequest::unserialize(std::stringstream& buffer) {
     std::size_t off     = 0;
 
     msgpack::unpacked r1;
-    msgpack::unpacked r2;
-
     msgpack::unpack(r1, data, size, off);
-    msgpack::unpack(r2, data, size, off);
-
     r1.get().convert(_userID);
-    r2.get().convert(_dataTypeID);
 
     return true;
 }
@@ -135,7 +129,6 @@ bool MsgJoinDataSuccess::unserialize(std::stringstream& buffer) {
 
 bool MsgLeaveDataRequest::serialize(std::stringstream& buffer) const {
     msgpack::pack(buffer, _userID);
-    msgpack::pack(buffer, _dataID);
     return true;
 }
 
@@ -145,13 +138,10 @@ bool MsgLeaveDataRequest::unserialize(std::stringstream& buffer) {
     std::size_t off     = 0;
 
     msgpack::unpacked r1;
-    msgpack::unpacked r2;
 
     msgpack::unpack(r1, data, size, off);
-    msgpack::unpack(r2, data, size, off);
 
     r1.get().convert(_userID);
-    r2.get().convert(_dataID);
 
     return true;
 }

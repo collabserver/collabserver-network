@@ -34,7 +34,7 @@ class MsgConnectionSuccess : public Message {
 
 class MsgDisconnectRequest : public Message {
     private:
-        int _userID; // ID the server gave to the user just connected.
+        int _userID;
     public:
         bool serialize(std::stringstream& buffer) const override;
         bool unserialize(std::stringstream& buffer) override;
@@ -62,14 +62,11 @@ class MsgDisconnectSuccess : public Message {
 class MsgCreaDataVolatileRequest : public Message {
     private:
         int _userID;
-        int _dataTypeID;
     public:
         bool serialize(std::stringstream& buffer) const override;
         bool unserialize(std::stringstream& buffer) override;
         void setUserID(const int id) { _userID = id; }
-        void setDataTypeID(const int id) { _dataTypeID = id; }
         int getUserID() const { return _userID; }
-        int getDataTypeID() const { return _dataTypeID; }
         int getType() const override {
             return MessageFactory::MSG_CREA_DATA_VOLATILE_REQUEST;
         }
@@ -116,14 +113,11 @@ class MsgJoinDataSuccess : public Message {
 class MsgLeaveDataRequest : public Message {
     private:
         int _userID;
-        int _dataID;
     public:
         bool serialize(std::stringstream& buffer) const override;
         bool unserialize(std::stringstream& buffer) override;
         void setUserID(const int id) { _userID = id; }
-        void setDataID(const int id) { _dataID = id; }
         int getUserID() const { return _userID; }
-        int getDataID() const { return _dataID; }
         int getType() const override {
             return MessageFactory::MSG_LEAVE_DATA_REQUEST;
         }
