@@ -13,9 +13,14 @@ ZMQSocketConfig conf {
 };
 
 
-// Just to compile ZMQSocket and check if its compiling
-TEST(ZMQSocket, constructor) {
-    ZMQSocket soso(conf);
+TEST(ZMQSocket, constructor_OnStack) {
+    ZMQSocket coco(conf);
+}
+
+TEST(ZMQSocket, constructor_OnHead) {
+    ZMQSocket *coco = new ZMQSocket(conf);
+    ASSERT_NE(coco, nullptr);
+    delete coco;
 }
 
 

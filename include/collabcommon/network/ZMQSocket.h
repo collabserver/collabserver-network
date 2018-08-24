@@ -10,7 +10,7 @@
 namespace collab {
 
 
-static zmq::context_t g_context(1);
+extern zmq::context_t g_context;
 
 
 /**
