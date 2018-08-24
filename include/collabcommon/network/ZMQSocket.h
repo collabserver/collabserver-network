@@ -10,16 +10,12 @@
 namespace collab {
 
 
-extern zmq::context_t g_context;
-
-
 /**
  * \brief
  * Configuration for a ZMQSocket.
  */
 struct ZMQSocketConfig {
     int             zmqPattern; // From ZMQ constants
-    zmq::context_t* zmqContext;
     MessageFactory* factory;
 };
 
@@ -42,7 +38,6 @@ struct ZMQSocketConfig {
  */
 class ZMQSocket {
     private:
-        zmq::context_t*     _context;
         zmq::socket_t*      _socket;
         MessageFactory*     _factory;
         std::string         _address;

@@ -8,19 +8,23 @@ namespace collab {
 
 ZMQSocketConfig conf {
     ZMQ_REP,
-    &g_context,
-    &(MessageFactory::getInstance())
+    &MessageFactory::getInstance()
 };
 
 
 TEST(ZMQSocket, constructor_OnStack) {
     ZMQSocket coco(conf);
+    ZMQSocket carrot(conf);
+    ZMQSocket rabbit(conf);
 }
 
 TEST(ZMQSocket, constructor_OnHead) {
     ZMQSocket *coco = new ZMQSocket(conf);
+    ZMQSocket *ellie = new ZMQSocket(conf);
     ASSERT_NE(coco, nullptr);
+    ASSERT_NE(ellie, nullptr);
     delete coco;
+    delete ellie;
 }
 
 
