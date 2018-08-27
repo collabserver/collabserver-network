@@ -24,8 +24,8 @@ class MessageFactory : private Singleton<MessageFactory> {
             MSG_DISCONNECT_REQUEST,
             MSG_DISCONNECT_SUCCESS,
 
-            MSG_CREA_DATA_VOLATILE_REQUEST,
-            MSG_CREA_DATA_VOLATILE_SUCCESS,
+            MSG_CREA_DATA_REQUEST,
+            MSG_CREA_DATA_SUCCESS,
             MSG_JOIN_DATA_REQUEST,
             MSG_JOIN_DATA_SUCCESS,
             MSG_LEAVE_DATA_REQUEST,

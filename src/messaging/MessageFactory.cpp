@@ -21,10 +21,10 @@ Message* MessageFactory::newMessage(const int type) const {
             return new MsgDisconnectSuccess();
 
         // Data
-        case MSG_CREA_DATA_VOLATILE_REQUEST:
-            return new MsgCreaDataVolatileRequest();
-        case MSG_CREA_DATA_VOLATILE_SUCCESS:
-            return new MsgCreaDataVolatileSuccess();
+        case MSG_CREA_DATA_REQUEST:
+            return new MsgCreaDataRequest();
+        case MSG_CREA_DATA_SUCCESS:
+            return new MsgCreaDataSuccess();
         case MSG_JOIN_DATA_REQUEST:
             return new MsgJoinDataRequest();
         case MSG_JOIN_DATA_SUCCESS:

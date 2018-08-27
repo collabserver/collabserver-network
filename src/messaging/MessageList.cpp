@@ -63,12 +63,12 @@ bool MsgDisconnectSuccess::unserialize(std::stringstream& buffer) {
 // Data Messages
 // -----------------------------------------------------------------------------
 
-bool MsgCreaDataVolatileRequest::serialize(std::stringstream& buffer) const {
+bool MsgCreaDataRequest::serialize(std::stringstream& buffer) const {
     msgpack::pack(buffer, _userID);
     return true;
 }
 
-bool MsgCreaDataVolatileRequest::unserialize(std::stringstream& buffer) {
+bool MsgCreaDataRequest::unserialize(std::stringstream& buffer) {
     const char* data    = buffer.str().data();
     const size_t size   = buffer.str().size();
     std::size_t off     = 0;
@@ -80,12 +80,12 @@ bool MsgCreaDataVolatileRequest::unserialize(std::stringstream& buffer) {
     return true;
 }
 
-bool MsgCreaDataVolatileSuccess::serialize(std::stringstream& buffer) const {
+bool MsgCreaDataSuccess::serialize(std::stringstream& buffer) const {
     msgpack::pack(buffer, _dataID);
     return true;
 }
 
-bool MsgCreaDataVolatileSuccess::unserialize(std::stringstream& buffer) {
+bool MsgCreaDataSuccess::unserialize(std::stringstream& buffer) {
     const char* data    = buffer.str().data();
     const size_t size   = buffer.str().size();
 

@@ -59,7 +59,7 @@ class MsgDisconnectSuccess : public Message {
 // Data Messages
 // -----------------------------------------------------------------------------
 
-class MsgCreaDataVolatileRequest : public Message {
+class MsgCreaDataRequest : public Message {
     private:
         int _userID;
     public:
@@ -68,11 +68,11 @@ class MsgCreaDataVolatileRequest : public Message {
         void setUserID(const int id) { _userID = id; }
         int getUserID() const { return _userID; }
         int getType() const override {
-            return MessageFactory::MSG_CREA_DATA_VOLATILE_REQUEST;
+            return MessageFactory::MSG_CREA_DATA_REQUEST;
         }
 };
 
-class MsgCreaDataVolatileSuccess : public Message {
+class MsgCreaDataSuccess : public Message {
     private:
         int _dataID;
     public:
@@ -81,7 +81,7 @@ class MsgCreaDataVolatileSuccess : public Message {
         void setDataID(const int id) { _dataID = id; }
         int getDataID() const { return _dataID; }
         int getType() const override {
-            return MessageFactory::MSG_CREA_DATA_VOLATILE_SUCCESS;
+            return MessageFactory::MSG_CREA_DATA_SUCCESS;
         }
 };
 
