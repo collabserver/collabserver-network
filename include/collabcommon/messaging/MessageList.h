@@ -189,10 +189,13 @@ class MsgError : public Message {
 
 class MsgUgly: public Message {
     private:
+        int _userID;
         bool _response;
     public:
         bool serialize(std::stringstream& buffer) const override;
         bool unserialize(std::stringstream& buffer) override;
+        void setUserID(const int id) { _userID = id; }
+        int getUserID() const { return _userID; }
         void setResponse(bool value) { _response = value; }
         bool getResponse() const { return _response; }
         int getType() const override {

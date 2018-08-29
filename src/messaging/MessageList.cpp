@@ -228,6 +228,7 @@ bool MsgError::unserialize(std::stringstream& buffer) {
 }
 
 bool MsgUgly::serialize(std::stringstream& buffer) const {
+    msgpack::pack(buffer, _userID);
     msgpack::pack(buffer, _response);
     return true;
 }
@@ -235,11 +236,16 @@ bool MsgUgly::serialize(std::stringstream& buffer) const {
 bool MsgUgly::unserialize(std::stringstream& buffer) {
     const char* data    = buffer.str().data();
     const size_t size   = buffer.str().size();
+    std::size_t off     = 0;
 
     msgpack::unpacked r1;
-    msgpack::unpack(r1, data, size);
-    r1.get().convert(_response);
+    msgpack::unpacked r2;
 
+    msgpack::unpack(r1, data, size, off);
+    msgpack::unpack(r2, data, size, off);
+
+    r1.get().convert(_userID);
+    r2.get().convert(_response);
     return true;
 }
 
