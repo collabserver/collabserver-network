@@ -35,7 +35,7 @@ class MessageFactory : private Singleton<MessageFactory> {
 
             MSG_ERROR,
             MSG_DEBUG,
-            MSG_EASTER_EGG,
+            MSG_UGLY,
             MSG_EMPTY,
 
             // Internal use (TO KEEP LAST).

@@ -43,8 +43,8 @@ Message* MessageFactory::newMessage(const int type) const {
             return new MsgError();
         case MSG_DEBUG:
             return new MsgDebug();
-        case MSG_EASTER_EGG:
-            return new MsgEasterEgg();
+        case MSG_UGLY:
+            return new MsgUgly();
         case MSG_EMPTY:
             return new MsgEmpty();
 

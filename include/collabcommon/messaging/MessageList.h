@@ -187,7 +187,7 @@ class MsgError : public Message {
         }
 };
 
-class MsgEasterEgg : public Message {
+class MsgUgly: public Message {
     private:
         bool _response;
     public:
@@ -196,7 +196,7 @@ class MsgEasterEgg : public Message {
         void setResponse(bool value) { _response = value; }
         bool getResponse() const { return _response; }
         int getType() const override {
-            return MessageFactory::MSG_EASTER_EGG;
+            return MessageFactory::MSG_UGLY;
         }
 };
 

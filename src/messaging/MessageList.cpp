@@ -227,12 +227,12 @@ bool MsgError::unserialize(std::stringstream& buffer) {
     return true;
 }
 
-bool MsgEasterEgg::serialize(std::stringstream& buffer) const {
+bool MsgUgly::serialize(std::stringstream& buffer) const {
     msgpack::pack(buffer, _response);
     return true;
 }
 
-bool MsgEasterEgg::unserialize(std::stringstream& buffer) {
+bool MsgUgly::unserialize(std::stringstream& buffer) {
     const char* data    = buffer.str().data();
     const size_t size   = buffer.str().size();
 
