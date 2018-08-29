@@ -34,11 +34,19 @@ Message* MessageFactory::newMessage(const int type) const {
         case MSG_LEAVE_DATA_SUCCESS:
             return new MsgLeaveDataSuccess();
 
+        // Room
+        case MSG_ROOM_OPERATION:
+            return new MsgRoomOperation();
+
         // Various
         case MSG_ERROR:
             return new MsgError();
         case MSG_DEBUG:
             return new MsgDebug();
+        case MSG_EASTER_EGG:
+            return new MsgEasterEgg();
+        case MSG_EMPTY:
+            return new MsgEmpty();
 
         default:
             return nullptr;

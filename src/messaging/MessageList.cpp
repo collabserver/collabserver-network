@@ -1,5 +1,6 @@
 #include "collabcommon/messaging/MessageList.h"
 
+#include <cassert>
 #include <sstream>
 #include <msgpack.hpp>
 
@@ -156,6 +157,41 @@ bool MsgLeaveDataSuccess::unserialize(std::stringstream& buffer) {
 
 
 // -----------------------------------------------------------------------------
+// Room
+// -----------------------------------------------------------------------------
+
+bool MsgRoomOperation::serialize(std::stringstream& buffer) const {
+    msgpack::pack(buffer, _roomID);
+    msgpack::pack(buffer, _userID);
+
+    // TODO
+    //assert(_operation != nullptr);
+    //_operation->serialize(buffer);
+
+    return true;
+}
+
+bool MsgRoomOperation::unserialize(std::stringstream& buffer) {
+    const char* data    = buffer.str().data();
+    const size_t size   = buffer.str().size();
+    std::size_t off     = 0;
+
+    msgpack::unpacked r1;
+    msgpack::unpacked r2;
+
+    msgpack::unpack(r1, data, size, off);
+    msgpack::unpack(r2, data, size, off);
+
+    r1.get().convert(_roomID);
+    r2.get().convert(_userID);
+
+    // TODO Set the new buffer that has only the operation buffer
+
+    return true;
+}
+
+
+// -----------------------------------------------------------------------------
 // Various / Debug / Error Messages
 // -----------------------------------------------------------------------------
 
@@ -188,6 +224,30 @@ bool MsgError::unserialize(std::stringstream& buffer) {
     msgpack::unpack(r1, data, size);
     r1.get().convert(_errorID);
 
+    return true;
+}
+
+bool MsgEasterEgg::serialize(std::stringstream& buffer) const {
+    msgpack::pack(buffer, _response);
+    return true;
+}
+
+bool MsgEasterEgg::unserialize(std::stringstream& buffer) {
+    const char* data    = buffer.str().data();
+    const size_t size   = buffer.str().size();
+
+    msgpack::unpacked r1;
+    msgpack::unpack(r1, data, size);
+    r1.get().convert(_response);
+
+    return true;
+}
+
+bool MsgEmpty::serialize(std::stringstream& buffer) const {
+    return true;
+}
+
+bool MsgEmpty::unserialize(std::stringstream& buffer) {
     return true;
 }
 

@@ -134,6 +134,30 @@ class MsgLeaveDataSuccess : public Message {
 
 
 // -----------------------------------------------------------------------------
+// Room
+// -----------------------------------------------------------------------------
+
+class MsgRoomOperation : public Message {
+    // TODO add buffer for receiving part (atm, only sending is working)
+    private:
+        int _roomID;
+        int _userID;
+        //std::stringstream _operation;
+    public:
+        bool serialize(std::stringstream& buffer) const override;
+        bool unserialize(std::stringstream& buffer) override;
+        void setRoomID(const int id) { _roomID = id; }
+        int getRoomID() const { return _roomID; }
+        void setUserID(const int id) { _userID = id; }
+        int getUserID() const { return _userID; }
+        //void setOperation(std::stringstream& op) { _operation = op; }
+        int getType() const override {
+            return MessageFactory::MSG_ROOM_OPERATION;
+        }
+};
+
+
+// -----------------------------------------------------------------------------
 // Various / Debug / Error Messages
 // -----------------------------------------------------------------------------
 
@@ -160,6 +184,28 @@ class MsgError : public Message {
         int getErrorID() const { return _errorID; }
         int getType() const override {
             return MessageFactory::MSG_ERROR;
+        }
+};
+
+class MsgEasterEgg : public Message {
+    private:
+        bool _response;
+    public:
+        bool serialize(std::stringstream& buffer) const override;
+        bool unserialize(std::stringstream& buffer) override;
+        void setResponse(bool value) { _response = value; }
+        bool getResponse() const { return _response; }
+        int getType() const override {
+            return MessageFactory::MSG_EASTER_EGG;
+        }
+};
+
+class MsgEmpty : public Message {
+    public:
+        bool serialize(std::stringstream& buffer) const override;
+        bool unserialize(std::stringstream& buffer) override;
+        int getType() const override {
+            return MessageFactory::MSG_EMPTY;
         }
 };
 

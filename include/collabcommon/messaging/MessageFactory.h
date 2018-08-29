@@ -31,8 +31,12 @@ class MessageFactory : private Singleton<MessageFactory> {
             MSG_LEAVE_DATA_REQUEST,
             MSG_LEAVE_DATA_SUCCESS,
 
+            MSG_ROOM_OPERATION,
+
             MSG_ERROR,
             MSG_DEBUG,
+            MSG_EASTER_EGG,
+            MSG_EMPTY,
 
             // Internal use (TO KEEP LAST).
             // Has the total number of defined messages
