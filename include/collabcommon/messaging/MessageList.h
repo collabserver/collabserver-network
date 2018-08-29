@@ -1,5 +1,7 @@
 #pragma once
 
+#include <sstream>
+
 #include "collabcommon/messaging/Message.h"
 #include "collabcommon/messaging/MessageFactory.h"
 
@@ -140,17 +142,18 @@ class MsgLeaveDataSuccess : public Message {
 class MsgRoomOperation : public Message {
     // TODO add buffer for receiving part (atm, only sending is working)
     private:
-        int _roomID;
         int _userID;
-        //std::stringstream _operation;
+        int _roomID;
+        //std::stringstream _operationBuffer;
     public:
         bool serialize(std::stringstream& buffer) const override;
         bool unserialize(std::stringstream& buffer) override;
-        void setRoomID(const int id) { _roomID = id; }
-        int getRoomID() const { return _roomID; }
         void setUserID(const int id) { _userID = id; }
         int getUserID() const { return _userID; }
+        void setRoomID(const int id) { _roomID = id; }
+        int getRoomID() const { return _roomID; }
         //void setOperation(std::stringstream& op) { _operation = op; }
+        //std::stringstream& getOperationBuffer() { return _operationBuffer; }
         int getType() const override {
             return MessageFactory::MSG_ROOM_OPERATION;
         }

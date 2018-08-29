@@ -161,8 +161,8 @@ bool MsgLeaveDataSuccess::unserialize(std::stringstream& buffer) {
 // -----------------------------------------------------------------------------
 
 bool MsgRoomOperation::serialize(std::stringstream& buffer) const {
-    msgpack::pack(buffer, _roomID);
     msgpack::pack(buffer, _userID);
+    msgpack::pack(buffer, _roomID);
 
     // TODO
     //assert(_operation != nullptr);
@@ -182,8 +182,8 @@ bool MsgRoomOperation::unserialize(std::stringstream& buffer) {
     msgpack::unpack(r1, data, size, off);
     msgpack::unpack(r2, data, size, off);
 
-    r1.get().convert(_roomID);
-    r2.get().convert(_userID);
+    r1.get().convert(_userID);
+    r2.get().convert(_roomID);
 
     // TODO Set the new buffer that has only the operation buffer
 
