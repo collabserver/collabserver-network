@@ -152,6 +152,7 @@ class MsgRoomOperation : public Message {
         void setRoomID(const int id) { _roomID = id; }
         int getRoomID() const { return _roomID; }
         std::string& getOperationBuffer() { return _opBuffer; }
+        const std::string& getOperationBuffer() const { return _opBuffer; }
         int getType() const override {
             return MessageFactory::MSG_ROOM_OPERATION;
         }
