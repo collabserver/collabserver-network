@@ -163,7 +163,7 @@ bool MsgLeaveDataSuccess::unserialize(std::stringstream& buffer) {
 bool MsgRoomOperation::serialize(std::stringstream& buffer) const {
     msgpack::pack(buffer, _userID);
     msgpack::pack(buffer, _roomID);
-    msgpack::pack(buffer, _opBuffer);
+    msgpack::pack(buffer, _opBuffer.str());
 
     return true;
 }
@@ -183,7 +183,7 @@ bool MsgRoomOperation::unserialize(std::stringstream& buffer) {
 
     r1.get().convert(_userID);
     r2.get().convert(_roomID);
-    r3.get().convert(_roomID);
+    _opBuffer.str(r3.get().as<std::string>());
 
     return true;
 }

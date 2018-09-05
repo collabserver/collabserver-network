@@ -140,7 +140,6 @@ class MsgLeaveDataSuccess : public Message {
 // -----------------------------------------------------------------------------
 
 class MsgRoomOperation : public Message {
-    // TODO add buffer for receiving part (atm, only sending is working)
     private:
         int _userID;
         int _roomID;
