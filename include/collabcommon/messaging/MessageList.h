@@ -141,17 +141,20 @@ class MsgLeaveDataSuccess : public Message {
 
 class MsgRoomOperation : public Message {
     private:
-        int         _userID;
         int         _roomID;
+        int         _userID;
+        int         _opTypeID;
         std::string _opBuffer;
     public:
         bool serialize(std::stringstream& buffer) const override;
         bool unserialize(std::stringstream& buffer) override;
-        void setUserID(const int id) { _userID = id; }
-        int getUserID() const { return _userID; }
         void setRoomID(const int id) { _roomID = id; }
         int getRoomID() const { return _roomID; }
-        std::string& getOperationBuffer() { return _opBuffer; }
+        void setUserID(const int id) { _userID = id; }
+        int getUserID() const { return _userID; }
+        void setOpTypeID(const int id) { _opTypeID = id; }
+        int getOpTypeID() const { return _opTypeID; }
+        void setOperationBuffer(const std::string& buff) { _opBuffer = buff; }
         const std::string& getOperationBuffer() const { return _opBuffer; }
         int getType() const override {
             return MessageFactory::MSG_ROOM_OPERATION;
