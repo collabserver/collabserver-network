@@ -124,6 +124,15 @@ class ZMQSocket {
          * \return Received message.
          */
         Message* receiveMessage();
+
+
+    // -------------------------------------------------------------------------
+    // Various
+    // -------------------------------------------------------------------------
+
+    public:
+
+        void setsockopt(int optName, const void* optValue, size_t optLength);
 };
 
 

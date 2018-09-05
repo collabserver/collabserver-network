@@ -130,6 +130,16 @@ Message* ZMQSocket::receiveMessage() {
 }
 
 
+// -----------------------------------------------------------------------------
+// Various
+// -----------------------------------------------------------------------------
+
+void ZMQSocket::setsockopt(int optName, const void* optValue, size_t optLength) {
+    assert(_socket != nullptr);
+    _socket->setsockopt(optName, optValue, optLength);
+}
+
+
 } // End namespace
 
 
