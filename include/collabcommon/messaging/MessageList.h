@@ -144,7 +144,7 @@ class MsgRoomOperation : public Message {
     private:
         int _userID;
         int _roomID;
-        //std::stringstream _operationBuffer;
+        std::stringstream _opBuffer;
     public:
         bool serialize(std::stringstream& buffer) const override;
         bool unserialize(std::stringstream& buffer) override;
@@ -152,8 +152,7 @@ class MsgRoomOperation : public Message {
         int getUserID() const { return _userID; }
         void setRoomID(const int id) { _roomID = id; }
         int getRoomID() const { return _roomID; }
-        //void setOperation(std::stringstream& op) { _operation = op; }
-        //std::stringstream& getOperationBuffer() { return _operationBuffer; }
+        std::stringstream& getOperationBuffer() { return _opBuffer; }
         int getType() const override {
             return MessageFactory::MSG_ROOM_OPERATION;
         }

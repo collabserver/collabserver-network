@@ -163,10 +163,7 @@ bool MsgLeaveDataSuccess::unserialize(std::stringstream& buffer) {
 bool MsgRoomOperation::serialize(std::stringstream& buffer) const {
     msgpack::pack(buffer, _userID);
     msgpack::pack(buffer, _roomID);
-
-    // TODO
-    //assert(_operation != nullptr);
-    //_operation->serialize(buffer);
+    msgpack::pack(buffer, _opBuffer);
 
     return true;
 }
@@ -178,14 +175,15 @@ bool MsgRoomOperation::unserialize(std::stringstream& buffer) {
 
     msgpack::unpacked r1;
     msgpack::unpacked r2;
+    msgpack::unpacked r3;
 
     msgpack::unpack(r1, data, size, off);
     msgpack::unpack(r2, data, size, off);
+    msgpack::unpack(r3, data, size, off);
 
     r1.get().convert(_userID);
     r2.get().convert(_roomID);
-
-    // TODO Set the new buffer that has only the operation buffer
+    r3.get().convert(_roomID);
 
     return true;
 }
