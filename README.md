@@ -28,8 +28,8 @@ Common library used by both collab-server and collab-client.
 
 
 ## Build instructions
-Collab is compiled as a static library. You must link `collab-common` and
-`zmq` to your executable to use the collab-common lib.
+Collab is compiled as a static library. If built manually, you must link with
+`zmq` and `collabcommon` and include the `msgpack/include` folder (Header only).
 
 ### Build types
 - CMake build types (ex: `-DCMAKE_BUILD_TYPE=Debug`):
@@ -40,7 +40,6 @@ Collab is compiled as a static library. You must link `collab-common` and
 
 ### Build static lib with CMake
 ```bash
-# Build manually
 mkdir build
 cd build
 cmake ..
