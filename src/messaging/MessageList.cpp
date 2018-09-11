@@ -170,19 +170,13 @@ bool MsgRoomOperation::serialize(std::stringstream& buffer) const {
 }
 
 bool MsgRoomOperation::unserialize(std::stringstream& buffer) {
-    const char* data    = buffer.str().data();
-    const size_t size   = buffer.str().size();
-    std::size_t off     = 0;
+    std::string str(buffer.str());
+    std::size_t off = 0;
 
-    msgpack::unpacked r1;
-    msgpack::unpacked r2;
-    msgpack::unpacked r3;
-    msgpack::unpacked r4;
-
-    msgpack::unpack(r1, data, size, off);
-    msgpack::unpack(r2, data, size, off);
-    msgpack::unpack(r3, data, size, off);
-    msgpack::unpack(r4, data, size, off);
+    msgpack::object_handle r1 = msgpack::unpack(str.data(), str.size(), off);
+    msgpack::object_handle r2 = msgpack::unpack(str.data(), str.size(), off);
+    msgpack::object_handle r3 = msgpack::unpack(str.data(), str.size(), off);
+    msgpack::object_handle r4 = msgpack::unpack(str.data(), str.size(), off);
 
     r1.get().convert(_roomID);
     r2.get().convert(_userID);
