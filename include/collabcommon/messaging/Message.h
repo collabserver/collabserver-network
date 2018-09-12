@@ -41,7 +41,7 @@ class Message {
          *
          * \return Type of the message.
          */
-        virtual int getType() const = 0;
+        virtual unsigned int getType() const = 0;
 };
 
 

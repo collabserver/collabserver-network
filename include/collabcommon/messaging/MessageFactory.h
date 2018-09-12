@@ -18,7 +18,12 @@ class MessageFactory : private Singleton<MessageFactory> {
     // Message types
     // -------------------------------------------------------------------------
     public:
-        enum Type : int {
+
+        /**
+         * List all kind of messages possible for CollabServer.
+         * Each message has a unique ID.
+         */
+        enum Type : unsigned int {
             MSG_CONNECTION_REQUEST,
             MSG_CONNECTION_SUCCESS,
             MSG_DISCONNECT_REQUEST,
@@ -73,7 +78,7 @@ class MessageFactory : private Singleton<MessageFactory> {
          * \param type  ID of the message type to create.
          * \return      Smart pointer to the new created Message.
          */
-        Message* newMessage(const int type) const;
+        Message* newMessage(const unsigned int type) const;
 
         /**
          * Free the message previously created by the factory.

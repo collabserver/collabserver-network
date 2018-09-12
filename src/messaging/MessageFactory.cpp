@@ -8,7 +8,7 @@
 namespace collab {
 
 
-Message* MessageFactory::newMessage(const int type) const {
+Message* MessageFactory::newMessage(const unsigned int type) const {
     switch(type) {
         // Connection
         case MSG_CONNECTION_REQUEST:

@@ -15,8 +15,8 @@ namespace collab {
  * Configuration for a ZMQSocket.
  */
 struct ZMQSocketConfig {
-    int             zmqPattern; // From ZMQ constants
-    MessageFactory* factory;
+    int                 zmqPattern; // From ZMQ constants (ex: ZMQ_SUB)
+    MessageFactory*     factory;
 };
 
 
