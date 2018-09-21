@@ -23,12 +23,12 @@ class MsgConnectionRequest : public Message {
 
 class MsgConnectionSuccess : public Message {
     private:
-        int _userID; // ID the server gave to the user just connected.
+        unsigned int _userID; // ID the server gave to the user just connected.
     public:
         bool serialize(std::stringstream& buffer) const override;
         bool unserialize(std::stringstream& buffer) override;
-        void setUserID(const int id) { _userID = id; }
-        int getUserID() const { return _userID; }
+        void setUserID(const unsigned int id) { _userID = id; }
+        unsigned int getUserID() const { return _userID; }
         unsigned int getType() const override {
             return MessageFactory::MSG_CONNECTION_SUCCESS;
         }
@@ -36,12 +36,12 @@ class MsgConnectionSuccess : public Message {
 
 class MsgDisconnectRequest : public Message {
     private:
-        int _userID;
+        unsigned int _userID;
     public:
         bool serialize(std::stringstream& buffer) const override;
         bool unserialize(std::stringstream& buffer) override;
-        void setUserID(const int id) { _userID = id; }
-        int getUserID() const { return _userID; }
+        void setUserID(const unsigned int id) { _userID = id; }
+        unsigned int getUserID() const { return _userID; }
         unsigned int getType() const override {
             return MessageFactory::MSG_DISCONNECT_REQUEST;
         }
@@ -63,12 +63,12 @@ class MsgDisconnectSuccess : public Message {
 
 class MsgCreaDataRequest : public Message {
     private:
-        int _userID;
+        unsigned int _userID;
     public:
         bool serialize(std::stringstream& buffer) const override;
         bool unserialize(std::stringstream& buffer) override;
-        void setUserID(const int id) { _userID = id; }
-        int getUserID() const { return _userID; }
+        void setUserID(const unsigned int id) { _userID = id; }
+        unsigned int getUserID() const { return _userID; }
         unsigned int getType() const override {
             return MessageFactory::MSG_CREA_DATA_REQUEST;
         }
@@ -76,12 +76,12 @@ class MsgCreaDataRequest : public Message {
 
 class MsgCreaDataSuccess : public Message {
     private:
-        int _dataID;
+        unsigned int _dataID;
     public:
         bool serialize(std::stringstream& buffer) const override;
         bool unserialize(std::stringstream& buffer) override;
-        void setDataID(const int id) { _dataID = id; }
-        int getDataID() const { return _dataID; }
+        void setDataID(const unsigned int id) { _dataID = id; }
+        unsigned int getDataID() const { return _dataID; }
         unsigned int getType() const override {
             return MessageFactory::MSG_CREA_DATA_SUCCESS;
         }
@@ -89,15 +89,15 @@ class MsgCreaDataSuccess : public Message {
 
 class MsgJoinDataRequest : public Message {
     private:
-        int _userID;
-        int _dataID;
+        unsigned int _userID;
+        unsigned int _dataID;
     public:
         bool serialize(std::stringstream& buffer) const override;
         bool unserialize(std::stringstream& buffer) override;
-        void setUserID(const int id) { _userID = id; }
-        void setDataID(const int id) { _dataID = id; }
-        int getUserID() const { return _userID; }
-        int getDataID() const { return _dataID; }
+        void setUserID(const unsigned int id) { _userID = id; }
+        void setDataID(const unsigned int id) { _dataID = id; }
+        unsigned int getUserID() const { return _userID; }
+        unsigned int getDataID() const { return _dataID; }
         unsigned int getType() const override {
             return MessageFactory::MSG_JOIN_DATA_REQUEST;
         }
@@ -114,12 +114,12 @@ class MsgJoinDataSuccess : public Message {
 
 class MsgLeaveDataRequest : public Message {
     private:
-        int _userID;
+        unsigned int _userID;
     public:
         bool serialize(std::stringstream& buffer) const override;
         bool unserialize(std::stringstream& buffer) override;
-        void setUserID(const int id) { _userID = id; }
-        int getUserID() const { return _userID; }
+        void setUserID(const unsigned int id) { _userID = id; }
+        unsigned int getUserID() const { return _userID; }
         unsigned int getType() const override {
             return MessageFactory::MSG_LEAVE_DATA_REQUEST;
         }
@@ -141,19 +141,19 @@ class MsgLeaveDataSuccess : public Message {
 
 class MsgRoomOperation : public Message {
     private:
-        int         _roomID;
-        int         _userID;
-        int         _opTypeID;
-        std::string _opBuffer;
+        unsigned int    _roomID;
+        unsigned int    _userID;
+        unsigned int    _opTypeID;
+        std::string     _opBuffer;
     public:
         bool serialize(std::stringstream& buffer) const override;
         bool unserialize(std::stringstream& buffer) override;
-        void setRoomID(const int id) { _roomID = id; }
-        int getRoomID() const { return _roomID; }
-        void setUserID(const int id) { _userID = id; }
-        int getUserID() const { return _userID; }
-        void setOpTypeID(const int id) { _opTypeID = id; }
-        int getOpTypeID() const { return _opTypeID; }
+        void setRoomID(const unsigned int id) { _roomID = id; }
+        void setUserID(const unsigned int id) { _userID = id; }
+        void setOpTypeID(const unsigned int id) { _opTypeID = id; }
+        unsigned int getRoomID() const { return _roomID; }
+        unsigned int getUserID() const { return _userID; }
+        unsigned int getOpTypeID() const { return _opTypeID; }
         void setOperationBuffer(const std::string& buff) { _opBuffer = buff; }
         const std::string& getOperationBuffer() const { return _opBuffer; }
         unsigned int getType() const override {
@@ -181,12 +181,12 @@ class MsgDebug : public Message {
 
 class MsgError : public Message {
     private:
-        int _errorID;
+        unsigned int _errorID;
     public:
         bool serialize(std::stringstream& buffer) const override;
         bool unserialize(std::stringstream& buffer) override;
-        void setErrorID(const int id) { _errorID = id; }
-        int getErrorID() const { return _errorID; }
+        void setErrorID(const unsigned int id) { _errorID = id; }
+        unsigned int getErrorID() const { return _errorID; }
         unsigned int getType() const override {
             return MessageFactory::MSG_ERROR;
         }
@@ -194,13 +194,13 @@ class MsgError : public Message {
 
 class MsgUgly: public Message {
     private:
-        int _userID;
+        unsigned int _userID;
         bool _response;
     public:
         bool serialize(std::stringstream& buffer) const override;
         bool unserialize(std::stringstream& buffer) override;
-        void setUserID(const int id) { _userID = id; }
-        int getUserID() const { return _userID; }
+        void setUserID(const unsigned int id) { _userID = id; }
+        unsigned int getUserID() const { return _userID; }
         void setResponse(bool value) { _response = value; }
         bool getResponse() const { return _response; }
         unsigned int getType() const override {
