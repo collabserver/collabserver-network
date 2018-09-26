@@ -9,15 +9,14 @@ endif()
 # ------------------------------------------------------------------------------
 # Dependencies and Misc
 # ------------------------------------------------------------------------------
-set(collab_dependency_dir "${CMAKE_SOURCE_DIR}/dependencies/")
-
 include("CMake/AddCompilerFlags.cmake")
-include("CMake/Dependencies/AddMsgPack.cmake")
+include("CMake/AddDependencies.cmake")
 
 
 # ------------------------------------------------------------------------------
-# Static lib
+# Static lib and Object lib
 # ------------------------------------------------------------------------------
+message(STATUS "Building static library")
 include_directories("${CMAKE_SOURCE_DIR}/include/")
 file(GLOB_RECURSE srcCommonFiles "${CMAKE_SOURCE_DIR}/src/*.cpp")
 
@@ -27,16 +26,12 @@ add_library(collabcommon STATIC ${srcCommonFiles})
 # ------------------------------------------------------------------------------
 # Tests
 # ------------------------------------------------------------------------------
-option(collab_tests "Build tests" OFF)
+option(COLLAB_TESTS "Build tests" OFF)
 
-if(collab_tests)
-    message(STATUS "Build tests")
+if(COLLAB_TESTS)
+    message(STATUS "Building tests")
     enable_testing()
 
-    # Dependencies
-    include("CMake/Dependencies/AddGoogleTest.cmake")
-
-    # Executables
     file(GLOB_RECURSE srcFilesTests "${CMAKE_SOURCE_DIR}/test/*.cpp")
 
     add_executable(tests ${srcFilesTests})
@@ -45,4 +40,5 @@ if(collab_tests)
     add_test(NAME googletests COMMAND tests)
     add_custom_target(runTests tests)
 endif()
+
 
