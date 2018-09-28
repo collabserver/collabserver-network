@@ -1,7 +1,7 @@
 # Collab Common
 
-[![Build Status](https://travis-ci.org/CollabServer/collab-common.svg?branch=master)](https://travis-ci.org/CollabServer/collab-common)
 [![license](https://img.shields.io/badge/license-LGPLv3.0-blue.svg)](https://github.com/CollabServer/collab-common/blob/master/LICENSE.txt)
+[![Build Status](https://travis-ci.org/CollabServer/collab-common.svg?branch=master)](https://travis-ci.org/CollabServer/collab-common)
 
 | master | dev |
 | :-----: | :-----: |
@@ -9,7 +9,7 @@
 
 
 ## Description
-Common library used by both collab-server and collab-client.
+Common library used by both collab-server and collab-client-interface projects.
 
 
 ## Features
@@ -85,6 +85,13 @@ make runTests
 
 Generate documentation with `doxygen Doxyfile`.
 Generated files are places in `doc` folder.
+
+
+## Contribution
+Feel free to ask me any question, share your ideas or open an issue.
+I created this project during my master thesis at University of Montreal.
+I generally try to follow the [Google C++ Coding Style](https://google.github.io/styleguide/cppguide.html)
+with some exceptions (For instance, I use 4 space indentation).
 
 
 ## Author
