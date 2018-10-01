@@ -41,14 +41,17 @@ CMake will use this one as the default location (Except if a custom path is
 given as CMake parameter).
 
 - [MessagePack](https://msgpack.org/)
-- [GoogleTest](https://github.com/google/googletest) (Only required for tests)
+- [ZeroMQ C++](https://github.com/zeromq/cppzmq) (C++ binding for ZeroMQ lib)
+- [GoogleTest](https://github.com/google/googletest) (Only required by tests)
 
 ### Manual dependencies (System Wide)
-These dependencies must be installed system-wide and are not downloaded by CMake.
-Check the instruction specific to your operating system for further information.
-(Ex: `pacman -S zeromq` on ArchLinux)
+**These dependencies must be installed system-wide** and are not downloaded by CMake.
+Check the instructions specific to your operating system for further information.
 
-- [ZeroMQ](http://zeromq.org/) (**Must be installed system-wide**)
+- [ZeroMQ](http://zeromq.org/)
+    - `pacman -S zeromq` on ArchLinux
+    - `apt-get install libzmq3 libzmq3-dev` on Ubuntu
+    - There is also a [Windows binary here](http://zeromq.org/distro:microsoft-windows))
 
 ### CMake options
 | Name | Description |
