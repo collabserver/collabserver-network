@@ -35,7 +35,7 @@ if(COLLAB_TESTS)
     file(GLOB_RECURSE srcFilesTests "${CMAKE_SOURCE_DIR}/test/*.cpp")
 
     add_executable(tests ${srcFilesTests})
-    target_link_libraries(tests gtest collabcommon zmq)
+    target_link_libraries(tests collabcommon gtest zmq)
 
     add_test(NAME googletests COMMAND tests)
     add_custom_target(runTests tests)

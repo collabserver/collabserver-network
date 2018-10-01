@@ -6,6 +6,7 @@
 
 # Alias variables
 set(COLLAB_MSGPACK_DIR      "${COLLAB_DEPENDENCIES_DIR}/msgpack-c")
+
 set(COLLAB_MSGPACK_SOURCES  "${COLLAB_MSGPACK_DIR}/sources")
 set(COLLAB_MSGPACK_HEADERS  "${COLLAB_MSGPACK_DIR}/include")
 set(COLLAB_MSGPACK_DOWNLOAD "${CMAKE_BINARY_DIR}/msgpack-download")
@@ -31,6 +32,7 @@ if(COLLAB_DEPENDENCIES_DOWNLOAD)
         message(FATAL_ERROR "CMake step for msgpack failed: ${result}")
     endif()
 
+    # Clone (in sources folder)
     execute_process(COMMAND ${CMAKE_COMMAND} --build .
         RESULT_VARIABLE result
         WORKING_DIRECTORY "${COLLAB_MSGPACK_DOWNLOAD}")
@@ -38,7 +40,7 @@ if(COLLAB_DEPENDENCIES_DOWNLOAD)
         message(FATAL_ERROR "Build step for msgpack failed: ${result}")
     endif()
 
-    # Copy headers (To follow dependency folder style)
+    # Copy in dependency folder
     file(COPY "${COLLAB_MSGPACK_SOURCES}/include"
          DESTINATION "${COLLAB_MSGPACK_DIR}")
 
