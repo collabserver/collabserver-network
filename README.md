@@ -8,96 +8,100 @@
 | [![Build Status](https://travis-ci.org/CollabServer/collab-common.svg?branch=master)](https://travis-ci.org/CollabServer/collab-common) | [![Build Status](https://travis-ci.org/CollabServer/collab-common.svg?branch=dev)](https://travis-ci.org/CollabServer/collab-common) |
 
 
-## Description
+# Overview
 Common library used by both collab-server and collab-client-interface projects.
 
 
-## Features
+# Features
 - Messaging system
 - Network wrapper
 - Utils
 
 
-## Build instructions (CMake)
-Collab is compiled as a static library. If built manually, you must link with
-`zmq` and `collabcommon` and include the `msgpack/include` folder (Header only).
+# Build on Linux (CMake)
+**Build static lib**
+```bash
+# Warning: Install system-wide dependencies
+# Be sure you have all requirements
 
-### Requirements
-- C++11
-- `pragma once` support
-- Tested with gcc 4.8.4
-- Tested with clang 5.0.0
-- Tested only on Linux. Not support certified for Mac and Windows
+mkdir build
+cd build
+cmake -DCOLLAB_DEPENDENCIES_DOWNLOAD=ON ..
+make
+```
 
-### Dependencies
-All dependencies are automatically downloaded by CMake and placed in a folder
-named `dependencies`.
-You may move this folder in another place later and request CMake not to
-download dependencies anymore (**See CMake options**).
+**Build tests**
+```bash
+# Warning: Install system-wide dependencies
+# Be sure you have all requirements
 
-If you are using a custom permanent location for your dependencies, a convenient
-solution is to set the environment variable `COLLAB_DEPENDENCIES_DIR` with this path.
-CMake will use this one as the default location (Except if a custom path is
-given as CMake parameter).
+mkdir build
+cd build
+cmake -DCOLLAB_DEPENDENCIES_DOWNLOAD=ON -DCOLLAB_TESTS=ON ..
+make
+make runTests
 
-- [MessagePack](https://msgpack.org/)
-- [ZeroMQ C++](https://github.com/zeromq/cppzmq) (C++ binding for ZeroMQ lib)
-- [GoogleTest](https://github.com/google/googletest) (Only required by tests)
+# Or use build script
+./build.sh
+```
 
-### Manual dependencies (System Wide)
-**These dependencies must be installed system-wide** and are not downloaded by CMake.
-Check the instructions specific to your operating system for further information.
+**CMake options**
 
-- [ZeroMQ](http://zeromq.org/)
-    - `pacman -S zeromq` on ArchLinux
-    - `apt-get install libzmq3 libzmq3-dev` on Ubuntu
-    - There is also a [Windows binary here](http://zeromq.org/distro:microsoft-windows))
-
-### CMake options
-| Name | Description |
+| CMake option name | Description |
 | --- | --- |
 | COLLAB_DEPENDENCIES_DIR | (STRING) Path to a directory where to find all dependencies (By default, uses current cmake build) |
 | COLLAB_DEPENDENCIES_DOWNLOAD | (ON/OFF) Set ON to also download dependencies at cmake time. This is useful the first time you setup the project. Dependencies are placed in COLLAB_DEPENDENCIES_DIR. (By default: OFF).|
 | COLLAB_TESTS | (ON/OFF) Set ON to build unit tests |
 | CMAKE_BUILD_TYPE | Debug, Release, RelWithDebInfo, MinSizeRel |
 
-### Build static lib with CMake
-```bash
-mkdir build
-cd build
-cmake -DCOLLAB_DEPENDENCIES_DOWNLOAD=ON ..
-make -j4
-```
 
-### Build and run tests with CMake
-```bash
-# Build manually
-mkdir build
-cd build
-cmake -DCOLLAB_DEPENDENCIES_DOWNLOAD=ON -DCOLLAB_TESTS=ON ..
-make -j4
-make runTests
-
-# Build from script
-./build.sh
-```
+# Requirements
+- C++11
+- `pragma once` support
+- Tested with gcc 4.8.4
+- Tested with clang 5.0.0
+- Tested only on Linux. **Not support certified for Mac and Windows**
+- CMake (2.8.2 or higher)
 
 
-## Generate documentation
-- [Doxygen](https://www.stack.nl/~dimitri/doxygen/)
+# Dependencies
+- System-Wide (**Must be installed manually**)
+    - [ZeroMQ](http://zeromq.org/) (Release 3.1.1)
+        - ArchLinux: `pacman -S zeromq`
+        - Ubuntu: `apt-get install libzmq3 libzmq3-dev`
+        - There is also a [Windows binary here](http://zeromq.org/distro:microsoft-windows) (Not tested yet)
+- Automatically downloaded and built by CMake
+    - [MessagePack](https://msgpack.org/)
+    - [GoogleTest](https://github.com/google/googletest) (Release 1.8.1)
 
-Generate documentation with `doxygen Doxyfile`.
-Generated files are places in `doc` folder.
+**Option: save dependencies for offline use**
+> Dependencies downloaded by CMake are placed in the current CMake build folder
+> (in `dependencies` folder).
+> This is useful the firs time.
+> To speedup the cmake process, you may keep these downloaded and built dependencies
+> in a safe place and change the CMake dependencies path (See CMake options).
+
+**Option: use environment variable for dependencies path**
+> If `COLLAB_DEPENDENCIES_DIR` environment variable is set, CMake will use
+> it as the current dependencies path.
 
 
-## Contribution
+# Generate Documentation
+1. Install [Doxygen](https://www.stack.nl/~dimitri/doxygen/)
+1. `doxygen Doxyfile`
+1. Files are placed in `doc` folder
+
+
+# Contribution
 Feel free to ask me any question, share your ideas or open an issue.
 I created this project during my master thesis at University of Montreal.
 I generally try to follow the [Google C++ Coding Style](https://google.github.io/styleguide/cppguide.html)
 with some exceptions (For instance, I use 4 space indentation).
 
+Uses C++11
 
-## Author
+
+# Author
 - Constantin Masson ([constantinmasson.com](http://constantinmasson.com/))
 
 
