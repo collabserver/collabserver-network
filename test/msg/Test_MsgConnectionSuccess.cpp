@@ -1,10 +1,10 @@
-#include "collabcommon/messaging/MessageList.h"
-
-#include <sstream>
 #include <gtest/gtest.h>
 
-namespace collab {
+#include <sstream>
 
+#include "collabcommon/messaging/MessageList.h"
+
+namespace collab {
 
 // -----------------------------------------------------------------------------
 // serialize / unserialize
@@ -40,7 +40,4 @@ TEST(MsgConnectionSuccess, serializeUnserialize) {
     ASSERT_EQ(msg3_resp.getUserID(), msg3.getUserID());
 }
 
-
-} // End namespace
-
-
+}  // namespace collab

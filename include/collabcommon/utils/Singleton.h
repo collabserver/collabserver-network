@@ -4,7 +4,6 @@
 
 namespace collab {
 
-
 /**
  * Singleton interface.
  * Any class that inherits from Singleton is not more instanciable.
@@ -28,19 +27,16 @@ namespace collab {
  */
 template <class T>
 class Singleton : private Uncopyable<Singleton<T>> {
-    private:
-        friend T;
-        Singleton() = default;
-        virtual ~Singleton() = default;
+   private:
+    friend T;
+    Singleton() = default;
+    virtual ~Singleton() = default;
 
-    public:
-        static T& getInstance() {
-            static T m_instance;
-            return m_instance;
-        }
+   public:
+    static T& getInstance() {
+        static T m_instance;
+        return m_instance;
+    }
 };
 
-
-} // End namespace
-
-
+}  // namespace collab

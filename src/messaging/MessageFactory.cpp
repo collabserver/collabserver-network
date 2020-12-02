@@ -7,9 +7,8 @@
 
 namespace collab {
 
-
 Message* MessageFactory::newMessage(const unsigned int type) const {
-    switch(type) {
+    switch (type) {
         // Connection
         case MSG_CONNECTION_REQUEST:
             return new MsgConnectionRequest();
@@ -55,12 +54,9 @@ Message* MessageFactory::newMessage(const unsigned int type) const {
 
 void MessageFactory::freeMessage(Message* msg) const {
     assert(msg != nullptr);
-    if(msg != nullptr) {
+    if (msg != nullptr) {
         delete msg;
     }
 }
 
-
-}  // End namespace
-
-
+}  // namespace collab

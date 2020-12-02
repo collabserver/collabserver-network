@@ -1,16 +1,11 @@
-#include "collabcommon/network/ZMQSocket.h"
-
 #include <gtest/gtest.h>
+
 #include "collabcommon/messaging/MessageFactory.h"
+#include "collabcommon/network/ZMQSocket.h"
 
 namespace collab {
 
-
-ZMQSocketConfig conf {
-    ZMQ_REP,
-    &MessageFactory::getInstance()
-};
-
+ZMQSocketConfig conf{ZMQ_REP, &MessageFactory::getInstance()};
 
 TEST(ZMQSocket, constructor_OnStack) {
     ZMQSocket coco(conf);
@@ -27,7 +22,4 @@ TEST(ZMQSocket, constructor_OnHead) {
     delete ellie;
 }
 
-
-} // End namespace
-
-
+}  // namespace collab

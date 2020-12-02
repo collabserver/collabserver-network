@@ -1,10 +1,10 @@
-#include "collabcommon/messaging/MessageList.h"
-
-#include <sstream>
 #include <gtest/gtest.h>
 
-namespace collab {
+#include <sstream>
 
+#include "collabcommon/messaging/MessageList.h"
+
+namespace collab {
 
 // -----------------------------------------------------------------------------
 // serialize / unserialize
@@ -22,7 +22,4 @@ TEST(MsgDebug, serializeUnserialize) {
     ASSERT_EQ(msg_resp.getContent(), msg.getContent());
 }
 
-
-} // End namespace
-
-
+}  // namespace collab

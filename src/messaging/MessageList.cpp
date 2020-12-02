@@ -1,23 +1,18 @@
 #include "collabcommon/messaging/MessageList.h"
 
 #include <cassert>
-#include <sstream>
 #include <msgpack.hpp>
+#include <sstream>
 
 namespace collab {
-
 
 // -----------------------------------------------------------------------------
 // Connection Messages
 // -----------------------------------------------------------------------------
 
-bool MsgConnectionRequest::serialize(std::stringstream& buffer) const {
-    return true;
-}
+bool MsgConnectionRequest::serialize(std::stringstream& buffer) const { return true; }
 
-bool MsgConnectionRequest::unserialize(std::stringstream& buffer) {
-    return true;
-}
+bool MsgConnectionRequest::unserialize(std::stringstream& buffer) { return true; }
 
 bool MsgConnectionSuccess::serialize(std::stringstream& buffer) const {
     msgpack::pack(buffer, _userID);
@@ -25,9 +20,9 @@ bool MsgConnectionSuccess::serialize(std::stringstream& buffer) const {
 }
 
 bool MsgConnectionSuccess::unserialize(std::stringstream& buffer) {
-    const char* data    = buffer.str().data();
-    const size_t size   = buffer.str().size();
-    std::size_t off     = 0;
+    const char* data = buffer.str().data();
+    const size_t size = buffer.str().size();
+    std::size_t off = 0;
 
     msgpack::unpacked r1 = msgpack::unpack(data, size, off);
     r1.get().convert(_userID);
@@ -42,9 +37,9 @@ bool MsgDisconnectRequest::serialize(std::stringstream& buffer) const {
 }
 
 bool MsgDisconnectRequest::unserialize(std::stringstream& buffer) {
-    const char* data    = buffer.str().data();
-    const size_t size   = buffer.str().size();
-    std::size_t off     = 0;
+    const char* data = buffer.str().data();
+    const size_t size = buffer.str().size();
+    std::size_t off = 0;
 
     msgpack::unpacked r1 = msgpack::unpack(data, size, off);
     r1.get().convert(_userID);
@@ -53,14 +48,9 @@ bool MsgDisconnectRequest::unserialize(std::stringstream& buffer) {
     return off == size;
 }
 
-bool MsgDisconnectSuccess::serialize(std::stringstream& buffer) const {
-    return true;
-}
+bool MsgDisconnectSuccess::serialize(std::stringstream& buffer) const { return true; }
 
-bool MsgDisconnectSuccess::unserialize(std::stringstream& buffer) {
-    return true;
-}
-
+bool MsgDisconnectSuccess::unserialize(std::stringstream& buffer) { return true; }
 
 // -----------------------------------------------------------------------------
 // Data Messages
@@ -72,9 +62,9 @@ bool MsgCreaDataRequest::serialize(std::stringstream& buffer) const {
 }
 
 bool MsgCreaDataRequest::unserialize(std::stringstream& buffer) {
-    const char* data    = buffer.str().data();
-    const size_t size   = buffer.str().size();
-    std::size_t off     = 0;
+    const char* data = buffer.str().data();
+    const size_t size = buffer.str().size();
+    std::size_t off = 0;
 
     msgpack::unpacked r1 = msgpack::unpack(data, size, off);
     r1.get().convert(_userID);
@@ -89,9 +79,9 @@ bool MsgCreaDataSuccess::serialize(std::stringstream& buffer) const {
 }
 
 bool MsgCreaDataSuccess::unserialize(std::stringstream& buffer) {
-    const char* data    = buffer.str().data();
-    const size_t size   = buffer.str().size();
-    std::size_t off     = 0;
+    const char* data = buffer.str().data();
+    const size_t size = buffer.str().size();
+    std::size_t off = 0;
 
     msgpack::unpacked r1 = msgpack::unpack(data, size, off);
     r1.get().convert(_dataID);
@@ -107,9 +97,9 @@ bool MsgJoinDataRequest::serialize(std::stringstream& buffer) const {
 }
 
 bool MsgJoinDataRequest::unserialize(std::stringstream& buffer) {
-    const char* data    = buffer.str().data();
-    const size_t size   = buffer.str().size();
-    std::size_t off     = 0;
+    const char* data = buffer.str().data();
+    const size_t size = buffer.str().size();
+    std::size_t off = 0;
 
     msgpack::unpacked r1 = msgpack::unpack(data, size, off);
     msgpack::unpacked r2 = msgpack::unpack(data, size, off);
@@ -121,13 +111,9 @@ bool MsgJoinDataRequest::unserialize(std::stringstream& buffer) {
     return off == size;
 }
 
-bool MsgJoinDataSuccess::serialize(std::stringstream& buffer) const {
-    return true;
-}
+bool MsgJoinDataSuccess::serialize(std::stringstream& buffer) const { return true; }
 
-bool MsgJoinDataSuccess::unserialize(std::stringstream& buffer) {
-    return true;
-}
+bool MsgJoinDataSuccess::unserialize(std::stringstream& buffer) { return true; }
 
 bool MsgLeaveDataRequest::serialize(std::stringstream& buffer) const {
     msgpack::pack(buffer, _userID);
@@ -135,9 +121,9 @@ bool MsgLeaveDataRequest::serialize(std::stringstream& buffer) const {
 }
 
 bool MsgLeaveDataRequest::unserialize(std::stringstream& buffer) {
-    const char* data    = buffer.str().data();
-    const size_t size   = buffer.str().size();
-    std::size_t off     = 0;
+    const char* data = buffer.str().data();
+    const size_t size = buffer.str().size();
+    std::size_t off = 0;
 
     msgpack::unpacked r1 = msgpack::unpack(data, size, off);
     r1.get().convert(_userID);
@@ -146,14 +132,9 @@ bool MsgLeaveDataRequest::unserialize(std::stringstream& buffer) {
     return off == size;
 }
 
-bool MsgLeaveDataSuccess::serialize(std::stringstream& buffer) const {
-    return true;
-}
+bool MsgLeaveDataSuccess::serialize(std::stringstream& buffer) const { return true; }
 
-bool MsgLeaveDataSuccess::unserialize(std::stringstream& buffer) {
-    return true;
-}
-
+bool MsgLeaveDataSuccess::unserialize(std::stringstream& buffer) { return true; }
 
 // -----------------------------------------------------------------------------
 // Room
@@ -186,7 +167,6 @@ bool MsgRoomOperation::unserialize(std::stringstream& buffer) {
     return off == str.size();
 }
 
-
 // -----------------------------------------------------------------------------
 // Various / Debug / Error Messages
 // -----------------------------------------------------------------------------
@@ -197,9 +177,9 @@ bool MsgDebug::serialize(std::stringstream& buffer) const {
 }
 
 bool MsgDebug::unserialize(std::stringstream& buffer) {
-    const char* data    = buffer.str().data();
-    const size_t size   = buffer.str().size();
-    std::size_t off     = 0;
+    const char* data = buffer.str().data();
+    const size_t size = buffer.str().size();
+    std::size_t off = 0;
 
     msgpack::unpacked r1 = msgpack::unpack(data, size, off);
     r1.get().convert(_content);
@@ -214,9 +194,9 @@ bool MsgError::serialize(std::stringstream& buffer) const {
 }
 
 bool MsgError::unserialize(std::stringstream& buffer) {
-    const char* data    = buffer.str().data();
-    const size_t size   = buffer.str().size();
-    std::size_t off     = 0;
+    const char* data = buffer.str().data();
+    const size_t size = buffer.str().size();
+    std::size_t off = 0;
 
     msgpack::unpacked r1 = msgpack::unpack(data, size, off);
     r1.get().convert(_errorID);
@@ -232,9 +212,9 @@ bool MsgUgly::serialize(std::stringstream& buffer) const {
 }
 
 bool MsgUgly::unserialize(std::stringstream& buffer) {
-    const char* data    = buffer.str().data();
-    const size_t size   = buffer.str().size();
-    std::size_t off     = 0;
+    const char* data = buffer.str().data();
+    const size_t size = buffer.str().size();
+    std::size_t off = 0;
 
     msgpack::unpacked r1 = msgpack::unpack(data, size, off);
     msgpack::unpacked r2 = msgpack::unpack(data, size, off);
@@ -246,15 +226,8 @@ bool MsgUgly::unserialize(std::stringstream& buffer) {
     return off == size;
 }
 
-bool MsgEmpty::serialize(std::stringstream& buffer) const {
-    return true;
-}
+bool MsgEmpty::serialize(std::stringstream& buffer) const { return true; }
 
-bool MsgEmpty::unserialize(std::stringstream& buffer) {
-    return true;
-}
+bool MsgEmpty::unserialize(std::stringstream& buffer) { return true; }
 
-
-} // End namespace
-
-
+}  // namespace collab

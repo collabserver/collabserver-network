@@ -1,10 +1,10 @@
-#include "collabcommon/messaging/MessageList.h"
-
-#include <sstream>
 #include <gtest/gtest.h>
 
-namespace collab {
+#include <sstream>
 
+#include "collabcommon/messaging/MessageList.h"
+
+namespace collab {
 
 // -----------------------------------------------------------------------------
 // MsgRoomOperation
@@ -48,8 +48,4 @@ TEST(MsgRoomOperation, serializeUnserialize) {
     ASSERT_EQ(msg2.getOperationBuffer(), opBuffer1);
 }
 
-
-} // End namespace
-
-
-
+}  // namespace collab

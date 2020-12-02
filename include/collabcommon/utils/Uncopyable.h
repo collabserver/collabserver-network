@@ -2,7 +2,6 @@
 
 namespace collab {
 
-
 /**
  * Uncopyable interface.
  * Any class that inherits from Uncopyable cannot be copied anymore.
@@ -17,16 +16,13 @@ namespace collab {
  */
 template <class T>
 class Uncopyable {
-    public:
-        Uncopyable() = default;
-        virtual ~Uncopyable() = default;
+   public:
+    Uncopyable() = default;
+    virtual ~Uncopyable() = default;
 
-    private:
-        Uncopyable(Uncopyable<T> const& other) = delete;
-        Uncopyable<T>& operator=(Uncopyable<T> const& other) = delete;
+   private:
+    Uncopyable(Uncopyable<T> const& other) = delete;
+    Uncopyable<T>& operator=(Uncopyable<T> const& other) = delete;
 };
 
-
-} // End namespace
-
-
+}  // namespace collab

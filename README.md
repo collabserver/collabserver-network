@@ -83,21 +83,25 @@ make runTests
 > If `COLLAB_DEPENDENCIES_DIR` environment variable is set, CMake will use
 > it as the current dependencies path.
 
+## Generate Documentation
 
-# Generate Documentation
+---
+
 1. Install [Doxygen](https://www.stack.nl/~dimitri/doxygen/)
-1. `doxygen Doxyfile`
+1. Run `doxygen Doxyfile`
 1. Files are placed in `doc` folder
 
+## Contribution
 
-# Contribution
+---
+
 Feel free to ask me any question, share your ideas or open an issue.
-I created this project during my master thesis at University of Montreal.
-I generally try to follow the [Google C++ Coding Style](https://google.github.io/styleguide/cppguide.html)
-with some exceptions (For instance, I use 4 space indentation).
+I started this project during my master thesis at University of Montreal.
+Format uses clang-format with the Google Coding style <https://google.github.io/styleguide/cppguide.html> (see `.clang-format` for further information).
+Make sure you autoformat on save (see <https://clang.llvm.org/docs/ClangFormat.html>)
 
+## Author
 
-# Author
-- Constantin Masson ([constantinmasson.com](http://constantinmasson.com/))
+---
 
-
+- Constantin Masson (geekymoose)
