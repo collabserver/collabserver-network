@@ -1,0 +1,15 @@
+# Uses vscode TODO+ for nice highlight
+# https://marketplace.visualstudio.com/items?itemName=fabiospampinato.vscode-todo-plus
+
+Cleanup:
+    ☐ Add clang-format
+    ☐ Rename `include/collabcommon` to `include/collabserver/network`
+    ☐ Rename `namespace collab` to `namespace collabserver`
+    ☐ Update all pointers with safer type (e.g., `std::unique_ptr`)
+Build:
+    ☐ Cleanup CMake build system
+    ☐ Place dependencies in the folder `extern`
+    ☐ Update CMake to download and build `ZeroMQ`
+Readme:
+    ☐ Update README with valid markdown
+    ☐ Update README with a custom logo
