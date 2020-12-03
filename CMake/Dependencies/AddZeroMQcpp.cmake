@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------------
-# Download ZMQ (CPP Header) at cmake time
+# Download and build ZMQ (CPP Header) at cmake time
 # Inspired from googletest
 # See: https://github.com/google/googletest/tree/master/googletest
 # ------------------------------------------------------------------------------

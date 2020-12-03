@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------------
-# Download msgpack at cmake time
+# Download and build msgpack at cmake time
 # Inspired from googletest
 # See: https://github.com/google/googletest/tree/master/googletest
 # ------------------------------------------------------------------------------
