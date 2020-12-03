@@ -5,7 +5,7 @@
 # ------------------------------------------------------------------------------
 
 # Alias variables
-set(COLLABSEVER_MSGPACK_DIR      "${COLLABSEVER_DEPENDENCIES_DIR}/msgpack-c")
+set(COLLABSEVER_MSGPACK_DIR      "${CMAKE_CURRENT_SOURCE_DIR}/extern/msgpack-c")
 
 set(COLLABSEVER_MSGPACK_SOURCES  "${COLLABSEVER_MSGPACK_DIR}/sources")
 set(COLLABSEVER_MSGPACK_HEADERS  "${COLLABSEVER_MSGPACK_DIR}/include")

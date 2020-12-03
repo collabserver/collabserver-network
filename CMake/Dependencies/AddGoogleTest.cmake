@@ -5,7 +5,7 @@
 # ------------------------------------------------------------------------------
 
 # Alias variables
-set(COLLABSEVER_GTEST_DIR        "${COLLABSEVER_DEPENDENCIES_DIR}/googletest")
+set(COLLABSEVER_GTEST_DIR        "${CMAKE_CURRENT_SOURCE_DIR}/extern/googletest")
 
 set(COLLABSEVER_GTEST_SOURCES    "${COLLABSEVER_GTEST_DIR}/sources")
 set(COLLABSEVER_GTEST_HEADERS    "${COLLABSEVER_GTEST_DIR}/include")

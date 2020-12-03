@@ -47,8 +47,6 @@ make runTests
 
 | CMake option name | Description |
 | --- | --- |
-| COLLABSEVER_DEPENDENCIES_DIR | (STRING) Path to a directory where to find all dependencies (By default, uses current cmake build). If this option is not set but the environment variable `COLLABSEVER_DEPENDENCIES_DIR` exists, this one is used instead of the default value. |
-| COLLABSEVER_DEPENDENCIES_DOWNLOAD | (ON/OFF) Set ON to also download dependencies at cmake time. This is useful the first time you setup the project. Dependencies are placed in COLLABSEVER_DEPENDENCIES_DIR. (By default: OFF).|
 | COLLABSEVER_TESTS | (ON/OFF) Set ON to build unit tests |
 | CMAKE_BUILD_TYPE | Debug, Release, RelWithDebInfo, MinSizeRel |
 
@@ -78,10 +76,6 @@ make runTests
 > This is useful the firs time.
 > To speedup the cmake process, you may keep these downloaded and built dependencies
 > in a safe place and change the CMake dependencies path (See CMake options).
-
-**Option: use environment variable for dependencies path**
-> If `COLLABSEVER_DEPENDENCIES_DIR` environment variable is set, CMake will use
-> it as the current dependencies path.
 
 ## Generate Documentation
 

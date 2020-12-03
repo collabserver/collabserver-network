@@ -6,7 +6,7 @@ Cleanup:
     ☐ Update all pointers with safer type (e.g., `std::unique_ptr`)
 Build:
     ☐ Cleanup CMake build system
-    ☐ Place dependencies in the folder `extern`
+    ✔ Place dependencies in the folder `extern` @done(20-12-03 02:59)
     ☐ Update CMake to download and build `ZeroMQ` instead of system wide install
 Readme:
     ☐ Update README with valid markdown

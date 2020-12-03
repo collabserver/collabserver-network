@@ -5,7 +5,7 @@
 # ------------------------------------------------------------------------------
 
 # Alias variables
-set(COLLABSEVER_CPPZMQ_DIR      "${COLLABSEVER_DEPENDENCIES_DIR}/cppzmq")
+set(COLLABSEVER_CPPZMQ_DIR      "${CMAKE_CURRENT_SOURCE_DIR}/extern/cppzmq")
 
 set(COLLABSEVER_CPPZMQ_SOURCES  "${COLLABSEVER_CPPZMQ_DIR}/sources")
 set(COLLABSEVER_CPPZMQ_HEADERS  "${COLLABSEVER_CPPZMQ_DIR}/include")
