@@ -7,75 +7,53 @@
 | :-----: | :-----: |
 | [![Build Status](https://travis-ci.org/CollabServer/collabserver-network.svg?branch=master)](https://travis-ci.org/CollabServer/collabserver-network) | [![Build Status](https://travis-ci.org/CollabServer/collabserver-network.svg?branch=dev)](https://travis-ci.org/CollabServer/collabserver-network) |
 
+## Overview
 
-# Overview
-Common library used by both collab-server and collab-client-interface projects.
+---
 
+This is an internal library for the CollabServer framework. It provides the networking components such as messaging and sockets.
 
-# Features
+## Features
+
+---
+
 - Messaging system
-- Network wrapper
-- Utility components
+- Socket wrapper
 
+## Build (CMake)
 
-# Build on Linux (CMake)
-**Build static lib**
+---
+
+- Requirements
+  - [CMake](https://cmake.org/)
+  - C++11
+  - `pragma once` support
+  - Tested with gcc 4.8.4
+  - Tested with clang 5.0.0
+  - Tested only on Linux. No support certified for Mac and Windows
+- Dependencies (downloaded and placed in `extern` by CMake)
+  - [GoogleTest](https://github.com/google/googletest)
+  - [MessagePack](https://msgpack.org/)
+  - [ZeroMQ CPP](https://zeromq.org/languages/cplusplus/)
+  - [ZeroMQ](http://zeromq.org/) (**WARNING** for now, this has to be installed on the system)
+
 ```bash
-# Warning: be sure you have all the system-wide dependencies and requirements
+# Build the tests
 
 mkdir build
 cd build
-cmake -DCOLLABSEVER_DEPENDENCIES_DOWNLOAD=ON ..
-make
-```
-
-**Build tests**
-```bash
-# Warning: be sure you have all the system-wide dependencies and requirements
-
-mkdir build
-cd build
-cmake -DCOLLABSEVER_DEPENDENCIES_DOWNLOAD=ON -DCOLLABSEVER_TESTS=ON ..
+cmake -DCOLLABSERVER_TESTS=ON ..
 make
 make runTests
 
-# Or use build script
+# Or use the build script
 ./build.sh
 ```
 
-**CMake options**
-
-| CMake option name | Description |
+| CMake option | Description |
 | --- | --- |
-| COLLABSEVER_TESTS | (ON/OFF) Set ON to build unit tests |
+| COLLABSERVER_TESTS | (ON / OFF) Set ON to build unit tests |
 | CMAKE_BUILD_TYPE | Debug, Release, RelWithDebInfo, MinSizeRel |
-
-
-# Requirements
-- C++11
-- `pragma once` support
-- Tested with gcc 4.8.4
-- Tested with clang 5.0.0
-- Tested only on Linux. **Not support certified for Mac and Windows**
-- CMake (2.8.2 or higher)
-
-
-# Dependencies
-- System-Wide (**Must be installed manually**)
-    - [ZeroMQ](http://zeromq.org/) (Release 3.1.1)
-        - ArchLinux: `pacman -S zeromq`
-        - Ubuntu: `apt-get install libzmq3 libzmq3-dev`
-        - There is also a [Windows binary here](http://zeromq.org/distro:microsoft-windows) (Not tested yet)
-- Automatically downloaded and built by CMake
-    - [MessagePack](https://msgpack.org/)
-    - [GoogleTest](https://github.com/google/googletest) (Release 1.8.1)
-
-**Option: save dependencies for offline use**
-> Dependencies downloaded by CMake are placed in the current CMake build folder
-> (in `dependencies` folder).
-> This is useful the firs time.
-> To speedup the cmake process, you may keep these downloaded and built dependencies
-> in a safe place and change the CMake dependencies path (See CMake options).
 
 ## Generate Documentation
 
@@ -93,9 +71,3 @@ Feel free to ask me any question, share your ideas or open an issue.
 I started this project during my master thesis at University of Montreal.
 Format uses clang-format with the Google Coding style <https://google.github.io/styleguide/cppguide.html> (see `.clang-format` for further information).
 Make sure you autoformat on save (see <https://clang.llvm.org/docs/ClangFormat.html>)
-
-## Author
-
----
-
-- Constantin Masson (geekymoose)
