@@ -11,8 +11,8 @@ include("CMake/AddDependencies.cmake")
 
 # Static lib and Object lib
 message(STATUS "Building static library")
-include_directories("${CMAKE_CURRENT_SOURCE_DIR}/include/")
-file(GLOB_RECURSE srcLibFiles "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
+include_directories("${PROJECT_SOURCE_DIR}/include/")
+file(GLOB_RECURSE srcLibFiles "${PROJECT_SOURCE_DIR}/src/*.cpp")
 add_library(collabserver_network STATIC ${srcLibFiles})
 
 # Tests
@@ -21,7 +21,7 @@ if(COLLABSERVER_TESTS)
     message(STATUS "Building tests")
     enable_testing()
 
-    file(GLOB_RECURSE srcTestFiles "${CMAKE_CURRENT_SOURCE_DIR}/tests/*.cpp")
+    file(GLOB_RECURSE srcTestFiles "${PROJECT_SOURCE_DIR}/tests/*.cpp")
 
     add_executable(tests ${srcTestFiles})
     target_link_libraries(tests collabserver_network gtest zmq)

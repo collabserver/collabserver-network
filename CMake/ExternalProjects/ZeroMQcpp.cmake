@@ -12,7 +12,7 @@ ExternalProject_Add(cppzmq
     BUILD_COMMAND       ""
     INSTALL_COMMAND     ""
     TEST_COMMAND        ""
-    CMAKE_ARGS          ""
+    CMAKE_ARGS          "-DCPPZMQ_BUILD_TESTS=OFF"
 )
 
 

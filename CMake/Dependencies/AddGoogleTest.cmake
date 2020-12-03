@@ -3,24 +3,13 @@
 # See https://crascit.com/2015/07/25/cmake-gtest/
 # ------------------------------------------------------------------------------
 
-# Alias variables
-set(COLLABSERVER_GTEST_DIR        "${CMAKE_CURRENT_SOURCE_DIR}/extern/googletest")
-
-set(COLLABSERVER_GTEST_SOURCES    "${COLLABSERVER_GTEST_DIR}/sources")
-set(COLLABSERVER_GTEST_HEADERS    "${COLLABSERVER_GTEST_DIR}/include")
-set(COLLABSERVER_GTEST_DOWNLOAD   "${CMAKE_CURRENT_BINARY_DIR}/googletest-download")
-set(COLLABSERVER_GTEST_BUILD      "${CMAKE_CURRENT_BINARY_DIR}/googletest-build")
-
+set(COLLABSERVER_GTEST_SOURCES    "${PROJECT_SOURCE_DIR}/extern/googletest")
+set(COLLABSERVER_GTEST_DOWNLOAD   "${PROJECT_BINARY_DIR}/googletest-download")
+set(COLLABSERVER_GTEST_BUILD      "${PROJECT_BINARY_DIR}/googletest-build")
 
 if(COLLABSERVER_DEPENDENCIES_DOWNLOAD)
-    # Create dep folder content
-    file(MAKE_DIRECTORY "${COLLABSERVER_GTEST_SOURCES}")
-    file(MAKE_DIRECTORY "${COLLABSERVER_GTEST_HEADERS}")
-
-
-    # Create Download CMakeLists
     configure_file(
-        "${CMAKE_CURRENT_SOURCE_DIR}/CMake/ExternalProjects/GoogleTest.cmake"
+        "${PROJECT_SOURCE_DIR}/CMake/ExternalProjects/GoogleTest.cmake"
         "${COLLABSERVER_GTEST_DOWNLOAD}/CMakeLists.txt")
 
     # Setup Download (in download folder)
@@ -39,11 +28,7 @@ if(COLLABSERVER_DEPENDENCIES_DOWNLOAD)
         message(FATAL_ERROR "Build step for googletest failed: ${result}")
     endif()
 
-    # Copy in dependency folder
-    file(COPY "${COLLABSERVER_GTEST_SOURCES}/googletest/include"
-         DESTINATION "${COLLABSERVER_GTEST_DIR}")
-
-elseif(NOT IS_DIRECTORY "${COLLABSERVER_GTEST_DIR}")
+elseif(NOT IS_DIRECTORY "${COLLABSERVER_GTEST_SOURCES}")
     message("WARNING: GoogleTest dependency is missing.")
     message("To download it automatically, set -DCOLLABSERVER_DEPENDENCIES_DOWNLOAD=ON")
     message(FATAL_ERROR "Missing dependency...")
@@ -55,9 +40,7 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 
 # Add googletest directly to our build. This defines
 # the gtest and gtest_main targets.
-add_subdirectory("${COLLABSERVER_GTEST_SOURCES}"
-                 "${COLLABSERVER_GTEST_BUILD}"
-                 EXCLUDE_FROM_ALL)
+add_subdirectory("${COLLABSERVER_GTEST_SOURCES}" EXCLUDE_FROM_ALL)
 
 # The gtest/gtest_main targets carry header search path
 # dependencies automatically when using CMake 2.8.11 or
@@ -65,5 +48,4 @@ add_subdirectory("${COLLABSERVER_GTEST_SOURCES}"
 if (CMAKE_VERSION VERSION_LESS 2.8.11)
     include_directories("${gtest_SOURCE_DIR}/include")
 endif()
-
 

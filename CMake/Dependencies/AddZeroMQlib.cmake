@@ -3,17 +3,13 @@
 # See https://crascit.com/2015/07/25/cmake-gtest/
 # ------------------------------------------------------------------------------
 
-# Alias variables
-set(COLLABSERVER_LIBZMQ_DOWNLOAD   "${CMAKE_CURRENT_BINARY_DIR}/libzmq-download")
-set(COLLABSERVER_LIBZMQ_BUILD      "${CMAKE_CURRENT_BINARY_DIR}/libzmq-build")
-set(COLLABSERVER_LIBZMQ_SOURCES    "${CMAKE_CURRENT_SOURCE_DIR}/extern/libzmq")
-
+set(COLLABSERVER_LIBZMQ_DOWNLOAD   "${PROJECT_BINARY_DIR}/libzmq-download")
+set(COLLABSERVER_LIBZMQ_SOURCES    "${PROJECT_SOURCE_DIR}/extern/libzmq")
 
 if(COLLABSERVER_DEPENDENCIES_DOWNLOAD)
-
     # Create Download CMakeLists
     configure_file(
-        "${CMAKE_CURRENT_SOURCE_DIR}/CMake/ExternalProjects/ZeroMQlib.cmake"
+        "${PROJECT_SOURCE_DIR}/CMake/ExternalProjects/ZeroMQlib.cmake"
         "${COLLABSERVER_LIBZMQ_DOWNLOAD}/CMakeLists.txt")
 
     # Setup Download (in download folder)
@@ -39,7 +35,5 @@ elseif(NOT IS_DIRECTORY "${COLLABSERVER_LIBZMQ_SOURCES}")
 endif()
 
 
-# Add libzmq directly to our build. This defines
-# the gtest and gtest_main targets.
 add_subdirectory("${COLLABSERVER_LIBZMQ_SOURCES}" EXCLUDE_FROM_ALL)
 

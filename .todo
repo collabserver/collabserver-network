@@ -4,8 +4,9 @@
 Cleanup:
     ☐ Update all pointers with safer type (e.g., `std::unique_ptr`)
 Build:
-    ☐ Cleanup CMake build system
-    ☐ Update CMake to download and build `ZeroMQ` instead of system wide install
+    ☐ Use CMake `FetchContent_Declare` instead of `ExternalProject_Add`
+    ✔ Cleanup CMake build system @done(20-12-03 23:24)
+    ✔ Update CMake to download and build `ZeroMQ` instead of system wide install @done(20-12-03 23:24)
 Readme:
     ☐ Update README with a custom logo
 
