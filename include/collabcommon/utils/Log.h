@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-namespace collab {
+namespace collabserver {
 
 #ifdef NDEBUG
 #define LOG std::clog << "[LOG]: "
@@ -10,4 +10,4 @@ namespace collab {
 #define LOG std::clog << "[LOG]:[" << __func__ << "@" << __LINE__ << "]: "
 #endif
 
-}  // namespace collab
+}  // namespace collabserver

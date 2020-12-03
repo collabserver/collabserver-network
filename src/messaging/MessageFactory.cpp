@@ -5,7 +5,7 @@
 #include "collabcommon/messaging/Message.h"
 #include "collabcommon/messaging/MessageList.h"
 
-namespace collab {
+namespace collabserver {
 
 Message* MessageFactory::newMessage(const unsigned int type) const {
     switch (type) {
@@ -59,4 +59,4 @@ void MessageFactory::freeMessage(Message* msg) const {
     }
 }
 
-}  // namespace collab
+}  // namespace collabserver

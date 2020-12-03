@@ -3,7 +3,7 @@
 #include "collabcommon/messaging/Message.h"
 #include "collabcommon/utils/Singleton.h"
 
-namespace collab {
+namespace collabserver {
 
 /**
  * \brief
@@ -85,4 +85,4 @@ class MessageFactory : private Singleton<MessageFactory> {
     void freeMessage(Message* msg) const;
 };
 
-}  // namespace collab
+}  // namespace collabserver

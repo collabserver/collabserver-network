@@ -4,7 +4,7 @@
 
 #include "collabcommon/messaging/MessageList.h"
 
-namespace collab {
+namespace collabserver {
 
 // -----------------------------------------------------------------------------
 // serialize / unserialize
@@ -40,4 +40,4 @@ TEST(MsgConnectionSuccess, serializeUnserialize) {
     ASSERT_EQ(msg3_resp.getUserID(), msg3.getUserID());
 }
 
-}  // namespace collab
+}  // namespace collabserver

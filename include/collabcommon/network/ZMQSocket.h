@@ -7,7 +7,7 @@
 #include "collabcommon/messaging/Message.h"
 #include "collabcommon/messaging/MessageFactory.h"
 
-namespace collab {
+namespace collabserver {
 
 /**
  * \brief
@@ -127,4 +127,4 @@ class ZMQSocket {
     void setsockopt(int optName, const void* optValue, size_t optLength);
 };
 
-}  // namespace collab
+}  // namespace collabserver

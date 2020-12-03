@@ -4,7 +4,7 @@
 #include <msgpack.hpp>
 #include <sstream>
 
-namespace collab {
+namespace collabserver {
 
 // -----------------------------------------------------------------------------
 // Connection Messages
@@ -230,4 +230,4 @@ bool MsgEmpty::serialize(std::stringstream& buffer) const { return true; }
 
 bool MsgEmpty::unserialize(std::stringstream& buffer) { return true; }
 
-}  // namespace collab
+}  // namespace collabserver

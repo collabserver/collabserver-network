@@ -2,7 +2,7 @@
 
 #include <sstream>
 
-namespace collab {
+namespace collabserver {
 
 /**
  * \brief
@@ -42,4 +42,4 @@ class Message {
     virtual unsigned int getType() const = 0;
 };
 
-}  // namespace collab
+}  // namespace collabserver

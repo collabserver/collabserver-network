@@ -3,7 +3,7 @@
 #include "collabcommon/messaging/MessageFactory.h"
 #include "collabcommon/network/ZMQSocket.h"
 
-namespace collab {
+namespace collabserver {
 
 ZMQSocketConfig conf{ZMQ_REP, &MessageFactory::getInstance()};
 
@@ -22,4 +22,4 @@ TEST(ZMQSocket, constructor_OnHead) {
     delete ellie;
 }
 
-}  // namespace collab
+}  // namespace collabserver

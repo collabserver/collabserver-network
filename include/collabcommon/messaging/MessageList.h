@@ -5,7 +5,7 @@
 #include "collabcommon/messaging/Message.h"
 #include "collabcommon/messaging/MessageFactory.h"
 
-namespace collab {
+namespace collabserver {
 
 // -----------------------------------------------------------------------------
 // Connection Messages
@@ -192,4 +192,4 @@ class MsgEmpty : public Message {
     unsigned int getType() const override { return MessageFactory::MSG_EMPTY; }
 };
 
-}  // namespace collab
+}  // namespace collabserver

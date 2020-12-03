@@ -1,6 +1,6 @@
 #pragma once
 
-namespace collab {
+namespace collabserver {
 
 /**
  * Uncopyable interface.
@@ -25,4 +25,4 @@ class Uncopyable {
     Uncopyable<T>& operator=(Uncopyable<T> const& other) = delete;
 };
 
-}  // namespace collab
+}  // namespace collabserver

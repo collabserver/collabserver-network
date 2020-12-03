@@ -4,7 +4,7 @@
 
 #include "collabcommon/messaging/MessageList.h"
 
-namespace collab {
+namespace collabserver {
 
 // -----------------------------------------------------------------------------
 // serialize / unserialize
@@ -22,4 +22,4 @@ TEST(MsgDebug, serializeUnserialize) {
     ASSERT_EQ(msg_resp.getContent(), msg.getContent());
 }
 
-}  // namespace collab
+}  // namespace collabserver

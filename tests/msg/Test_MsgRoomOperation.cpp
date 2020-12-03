@@ -4,7 +4,7 @@
 
 #include "collabcommon/messaging/MessageList.h"
 
-namespace collab {
+namespace collabserver {
 
 // -----------------------------------------------------------------------------
 // MsgRoomOperation
@@ -48,4 +48,4 @@ TEST(MsgRoomOperation, serializeUnserialize) {
     ASSERT_EQ(msg2.getOperationBuffer(), opBuffer1);
 }
 
-}  // namespace collab
+}  // namespace collabserver

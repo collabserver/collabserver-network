@@ -3,7 +3,7 @@
 #include <cassert>
 #include <cstring>
 
-namespace collab {
+namespace collabserver {
 
 zmq::context_t g_context(1);
 
@@ -134,4 +134,4 @@ void ZMQSocket::setsockopt(int optName, const void* optValue, size_t optLength) 
     _socket->setsockopt(optName, optValue, optLength);
 }
 
-}  // namespace collab
+}  // namespace collabserver

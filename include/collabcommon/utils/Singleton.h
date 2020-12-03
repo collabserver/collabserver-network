@@ -2,7 +2,7 @@
 
 #include "Uncopyable.h"
 
-namespace collab {
+namespace collabserver {
 
 /**
  * Singleton interface.
@@ -39,4 +39,4 @@ class Singleton : private Uncopyable<Singleton<T>> {
     }
 };
 
-}  // namespace collab
+}  // namespace collabserver
