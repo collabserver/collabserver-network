@@ -5,29 +5,29 @@
 # ------------------------------------------------------------------------------
 
 # Alias variables
-set(COLLAB_GTEST_DIR        "${COLLAB_DEPENDENCIES_DIR}/googletest")
+set(COLLABSEVER_GTEST_DIR        "${COLLABSEVER_DEPENDENCIES_DIR}/googletest")
 
-set(COLLAB_GTEST_SOURCES    "${COLLAB_GTEST_DIR}/sources")
-set(COLLAB_GTEST_HEADERS    "${COLLAB_GTEST_DIR}/include")
-set(COLLAB_GTEST_DOWNLOAD   "${CMAKE_BINARY_DIR}/googletest-download")
-set(COLLAB_GTEST_BUILD      "${CMAKE_BINARY_DIR}/googletest-build")
+set(COLLABSEVER_GTEST_SOURCES    "${COLLABSEVER_GTEST_DIR}/sources")
+set(COLLABSEVER_GTEST_HEADERS    "${COLLABSEVER_GTEST_DIR}/include")
+set(COLLABSEVER_GTEST_DOWNLOAD   "${CMAKE_BINARY_DIR}/googletest-download")
+set(COLLABSEVER_GTEST_BUILD      "${CMAKE_BINARY_DIR}/googletest-build")
 
 
-if(COLLAB_DEPENDENCIES_DOWNLOAD)
+if(COLLABSEVER_DEPENDENCIES_DOWNLOAD)
     # Create dep folder content
-    file(MAKE_DIRECTORY "${COLLAB_GTEST_SOURCES}")
-    file(MAKE_DIRECTORY "${COLLAB_GTEST_HEADERS}")
+    file(MAKE_DIRECTORY "${COLLABSEVER_GTEST_SOURCES}")
+    file(MAKE_DIRECTORY "${COLLABSEVER_GTEST_HEADERS}")
 
 
     # Create Download CMakeLists
     configure_file(
         "${CMAKE_SOURCE_DIR}/CMake/ExternalProjects/GoogleTest.cmake"
-        "${COLLAB_GTEST_DOWNLOAD}/CMakeLists.txt")
+        "${COLLABSEVER_GTEST_DOWNLOAD}/CMakeLists.txt")
 
     # Setup Download (in download folder)
     execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" .
         RESULT_VARIABLE result
-        WORKING_DIRECTORY "${COLLAB_GTEST_DOWNLOAD}")
+        WORKING_DIRECTORY "${COLLABSEVER_GTEST_DOWNLOAD}")
     if(result)
         message(FATAL_ERROR "CMake step for googletest failed: ${result}")
     endif()
@@ -35,18 +35,18 @@ if(COLLAB_DEPENDENCIES_DOWNLOAD)
     # Clone (in sources folder)
     execute_process(COMMAND ${CMAKE_COMMAND} --build .
         RESULT_VARIABLE result
-        WORKING_DIRECTORY "${COLLAB_GTEST_DOWNLOAD}")
+        WORKING_DIRECTORY "${COLLABSEVER_GTEST_DOWNLOAD}")
     if(result)
         message(FATAL_ERROR "Build step for googletest failed: ${result}")
     endif()
 
     # Copy in dependency folder
-    file(COPY "${COLLAB_GTEST_SOURCES}/googletest/include"
-         DESTINATION "${COLLAB_GTEST_DIR}")
+    file(COPY "${COLLABSEVER_GTEST_SOURCES}/googletest/include"
+         DESTINATION "${COLLABSEVER_GTEST_DIR}")
 
-elseif(NOT IS_DIRECTORY "${COLLAB_GTEST_DIR}")
+elseif(NOT IS_DIRECTORY "${COLLABSEVER_GTEST_DIR}")
     message("WARNING: GoogleTest dependency is missing.")
-    message("To download it automatically, set -DCOLLAB_DEPENDENCIES_DOWNLOAD=ON")
+    message("To download it automatically, set -DCOLLABSEVER_DEPENDENCIES_DOWNLOAD=ON")
     message(FATAL_ERROR "Missing dependency...")
 endif()
 
@@ -56,8 +56,8 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 
 # Add googletest directly to our build. This defines
 # the gtest and gtest_main targets.
-add_subdirectory("${COLLAB_GTEST_SOURCES}"
-                 "${COLLAB_GTEST_BUILD}"
+add_subdirectory("${COLLABSEVER_GTEST_SOURCES}"
+                 "${COLLABSEVER_GTEST_BUILD}"
                  EXCLUDE_FROM_ALL)
 
 # The gtest/gtest_main targets carry header search path

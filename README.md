@@ -25,7 +25,7 @@ Common library used by both collab-server and collab-client-interface projects.
 
 mkdir build
 cd build
-cmake -DCOLLAB_DEPENDENCIES_DOWNLOAD=ON ..
+cmake -DCOLLABSEVER_DEPENDENCIES_DOWNLOAD=ON ..
 make
 ```
 
@@ -35,7 +35,7 @@ make
 
 mkdir build
 cd build
-cmake -DCOLLAB_DEPENDENCIES_DOWNLOAD=ON -DCOLLAB_TESTS=ON ..
+cmake -DCOLLABSEVER_DEPENDENCIES_DOWNLOAD=ON -DCOLLABSEVER_TESTS=ON ..
 make
 make runTests
 
@@ -47,9 +47,9 @@ make runTests
 
 | CMake option name | Description |
 | --- | --- |
-| COLLAB_DEPENDENCIES_DIR | (STRING) Path to a directory where to find all dependencies (By default, uses current cmake build). If this option is not set but the environment variable `COLLAB_DEPENDENCIES_DIR` exists, this one is used instead of the default value. |
-| COLLAB_DEPENDENCIES_DOWNLOAD | (ON/OFF) Set ON to also download dependencies at cmake time. This is useful the first time you setup the project. Dependencies are placed in COLLAB_DEPENDENCIES_DIR. (By default: OFF).|
-| COLLAB_TESTS | (ON/OFF) Set ON to build unit tests |
+| COLLABSEVER_DEPENDENCIES_DIR | (STRING) Path to a directory where to find all dependencies (By default, uses current cmake build). If this option is not set but the environment variable `COLLABSEVER_DEPENDENCIES_DIR` exists, this one is used instead of the default value. |
+| COLLABSEVER_DEPENDENCIES_DOWNLOAD | (ON/OFF) Set ON to also download dependencies at cmake time. This is useful the first time you setup the project. Dependencies are placed in COLLABSEVER_DEPENDENCIES_DIR. (By default: OFF).|
+| COLLABSEVER_TESTS | (ON/OFF) Set ON to build unit tests |
 | CMAKE_BUILD_TYPE | Debug, Release, RelWithDebInfo, MinSizeRel |
 
 
@@ -80,7 +80,7 @@ make runTests
 > in a safe place and change the CMake dependencies path (See CMake options).
 
 **Option: use environment variable for dependencies path**
-> If `COLLAB_DEPENDENCIES_DIR` environment variable is set, CMake will use
+> If `COLLABSEVER_DEPENDENCIES_DIR` environment variable is set, CMake will use
 > it as the current dependencies path.
 
 ## Generate Documentation

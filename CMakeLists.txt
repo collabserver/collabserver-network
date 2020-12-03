@@ -16,8 +16,8 @@ file(GLOB_RECURSE srcLibFiles "${CMAKE_SOURCE_DIR}/src/*.cpp")
 add_library(collabserver_network STATIC ${srcLibFiles})
 
 # Tests
-option(COLLAB_TESTS "Build tests" OFF)
-if(COLLAB_TESTS)
+option(COLLABSEVER_TESTS "Build tests" OFF)
+if(COLLABSEVER_TESTS)
     message(STATUS "Building tests")
     enable_testing()
 

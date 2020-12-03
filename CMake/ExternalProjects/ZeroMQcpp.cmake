@@ -6,8 +6,8 @@ include(ExternalProject)
 ExternalProject_Add(msgpack
     GIT_REPOSITORY      "https://github.com/zeromq/cppzmq.git"
     GIT_TAG             "v4.3.0"
-    SOURCE_DIR          "${COLLAB_CPPZMQ_SOURCES}"
-    BINARY_DIR          "${COLLAB_CPPZMQ_BUILD}"
+    SOURCE_DIR          "${COLLABSEVER_CPPZMQ_SOURCES}"
+    BINARY_DIR          "${COLLABSEVER_CPPZMQ_BUILD}"
     CONFIGURE_COMMAND   ""
     BUILD_COMMAND       ""
     INSTALL_COMMAND     ""
