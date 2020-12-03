@@ -1,13 +1,13 @@
 cmake_minimum_required(VERSION 2.8.2 FATAL_ERROR)
 
-project(cppzmq-download NONE)
+project(libzmq-download NONE)
 
 include(ExternalProject)
-ExternalProject_Add(cppzmq
-    GIT_REPOSITORY      "https://github.com/zeromq/cppzmq.git"
+ExternalProject_Add(msgpack
+    GIT_REPOSITORY      "https://github.com/zeromq/libzmq"
     GIT_TAG             "v4.3.0"
-    SOURCE_DIR          "${COLLABSERVER_CPPZMQ_SOURCES}"
-    BINARY_DIR          "${COLLABSERVER_CPPZMQ_BUILD}"
+    SOURCE_DIR          "${COLLABSERVER_LIBZMQ_SOURCES}"
+    BINARY_DIR          "${COLLABSERVER_LIBZMQ_BUILD}"
     CONFIGURE_COMMAND   ""
     BUILD_COMMAND       ""
     INSTALL_COMMAND     ""

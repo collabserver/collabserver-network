@@ -6,8 +6,8 @@ include(ExternalProject)
 ExternalProject_Add(msgpack
     GIT_REPOSITORY      "https://github.com/msgpack/msgpack-c.git"
     GIT_TAG             "cpp-3.1.1"
-    SOURCE_DIR          "${COLLABSEVER_MSGPACK_SOURCES}"
-    BINARY_DIR          "${COLLABSEVER_MSGPACK_BUILD}"
+    SOURCE_DIR          "${COLLABSERVER_MSGPACK_SOURCES}"
+    BINARY_DIR          "${COLLABSERVER_MSGPACK_BUILD}"
     CONFIGURE_COMMAND   ""
     BUILD_COMMAND       ""
     INSTALL_COMMAND     ""
