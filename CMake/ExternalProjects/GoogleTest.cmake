@@ -5,7 +5,7 @@ project(googletest-download NONE)
 include(ExternalProject)
 ExternalProject_Add(googletest
     GIT_REPOSITORY      "https://github.com/google/googletest.git"
-    GIT_TAG             "release-1.8.1"
+    GIT_TAG             "release-1.10.0"
     SOURCE_DIR          "${COLLABSEVER_GTEST_SOURCES}"
     BINARY_DIR          "${COLLABSEVER_GTEST_BUILD}"
     CONFIGURE_COMMAND   ""
