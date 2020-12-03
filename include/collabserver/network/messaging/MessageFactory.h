@@ -1,7 +1,7 @@
 #pragma once
 
-#include "collabcommon/messaging/Message.h"
-#include "collabcommon/utils/Singleton.h"
+#include "collabserver/network/messaging/Message.h"
+#include "collabserver/network/utils/Singleton.h"
 
 namespace collabserver {
 

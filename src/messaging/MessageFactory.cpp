@@ -1,9 +1,9 @@
-#include "collabcommon/messaging/MessageFactory.h"
+#include "collabserver/network/messaging/MessageFactory.h"
 
 #include <cassert>
 
-#include "collabcommon/messaging/Message.h"
-#include "collabcommon/messaging/MessageList.h"
+#include "collabserver/network/messaging/Message.h"
+#include "collabserver/network/messaging/MessageList.h"
 
 namespace collabserver {
 

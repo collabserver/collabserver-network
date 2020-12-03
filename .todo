@@ -2,9 +2,7 @@
 # https://marketplace.visualstudio.com/items?itemName=fabiospampinato.vscode-todo-plus
 
 Cleanup:
-    ✔ Apply clang-format on the whole project @done(20-12-03 02:31)
     ☐ Rename `include/collabcommon` to `include/collabserver/network`
-    ✔ Rename `namespace collabserver` to `namespace collabserver` @done(20-12-03 02:34)
     ☐ Update all pointers with safer type (e.g., `std::unique_ptr`)
 Build:
     ☐ Cleanup CMake build system
@@ -15,4 +13,6 @@ Readme:
     ☐ Update README with a custom logo
 
 Archive:
+  ✔ Apply clang-format on the whole project @done(20-12-03 02:31) @project(Cleanup)
+  ✔ Rename `namespace collabserver` to `namespace collabserver` @done(20-12-03 02:34) @project(Cleanup)
   ✔ Add clang-format @done(20-12-02 01:21) @project(Cleanup)

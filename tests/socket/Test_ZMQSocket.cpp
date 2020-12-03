@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 
-#include "collabcommon/messaging/MessageFactory.h"
-#include "collabcommon/network/ZMQSocket.h"
+#include "collabserver/network/messaging/MessageFactory.h"
+#include "collabserver/network/socket/ZMQSocket.h"
 
 namespace collabserver {
 

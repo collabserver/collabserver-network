@@ -2,7 +2,7 @@
 
 #include <sstream>
 
-#include "collabcommon/messaging/MessageList.h"
+#include "collabserver/network/messaging/MessageList.h"
 
 namespace collabserver {
 

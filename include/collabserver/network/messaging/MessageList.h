@@ -2,8 +2,8 @@
 
 #include <sstream>
 
-#include "collabcommon/messaging/Message.h"
-#include "collabcommon/messaging/MessageFactory.h"
+#include "collabserver/network/messaging/Message.h"
+#include "collabserver/network/messaging/MessageFactory.h"
 
 namespace collabserver {
 

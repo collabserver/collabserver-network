@@ -13,7 +13,7 @@ include("CMake/AddDependencies.cmake")
 message(STATUS "Building static library")
 include_directories("${CMAKE_SOURCE_DIR}/include/")
 file(GLOB_RECURSE srcLibFiles "${CMAKE_SOURCE_DIR}/src/*.cpp")
-add_library(collabcommon STATIC ${srcLibFiles})
+add_library(collabserver_network STATIC ${srcLibFiles})
 
 # Tests
 option(COLLAB_TESTS "Build tests" OFF)
@@ -24,7 +24,7 @@ if(COLLAB_TESTS)
     file(GLOB_RECURSE srcTestFiles "${CMAKE_SOURCE_DIR}/tests/*.cpp")
 
     add_executable(tests ${srcTestFiles})
-    target_link_libraries(tests collabcommon gtest zmq)
+    target_link_libraries(tests collabserver_network gtest zmq)
 
     add_test(NAME googletests COMMAND tests)
     add_custom_target(runTests tests)

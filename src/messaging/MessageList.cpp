@@ -1,4 +1,4 @@
-#include "collabcommon/messaging/MessageList.h"
+#include "collabserver/network/messaging/MessageList.h"
 
 #include <cassert>
 #include <msgpack.hpp>

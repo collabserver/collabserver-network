@@ -1,4 +1,4 @@
-#include "collabcommon/network/ZMQSocket.h"
+#include "collabserver/network/socket/ZMQSocket.h"
 
 #include <cassert>
 #include <cstring>
