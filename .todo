@@ -2,12 +2,12 @@
 # https://marketplace.visualstudio.com/items?itemName=fabiospampinato.vscode-todo-plus
 
 Cleanup:
-    ☐ Rename `include/collabcommon` to `include/collabserver/network`
+    ✔ Rename `include/collabcommon` to `include/collabserver/network` @done(20-12-03 02:46)
     ☐ Update all pointers with safer type (e.g., `std::unique_ptr`)
 Build:
     ☐ Cleanup CMake build system
     ☐ Place dependencies in the folder `extern`
-    ☐ Update CMake to download and build `ZeroMQ`
+    ☐ Update CMake to download and build `ZeroMQ` instead of system wide install
 Readme:
     ☐ Update README with valid markdown
     ☐ Update README with a custom logo

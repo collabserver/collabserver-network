@@ -7,7 +7,7 @@ set -e
 mkdir build || true
 cd build
 
-cmake -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
+cmake -DCMAKE_BUILD_TYPE=${ENV_BUILD_TYPE} \
       -DCOLLAB_DEPENDENCIES_DOWNLOAD=ON \
       -DCOLLAB_TESTS=ON \
       ..
