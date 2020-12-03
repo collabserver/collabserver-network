@@ -35,7 +35,7 @@ This is an internal library for the CollabServer framework. It provides the netw
   - [GoogleTest](https://github.com/google/googletest)
   - [MessagePack](https://msgpack.org/)
   - [ZeroMQ CPP](https://zeromq.org/languages/cplusplus/)
-  - [ZeroMQ](http://zeromq.org/) (**WARNING** for now, this has to be installed on the system)
+  - [ZeroMQ](http://zeromq.org/)
 
 ```bash
 # Build the tests
