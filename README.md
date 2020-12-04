@@ -31,7 +31,7 @@ This is an internal library for the CollabServer framework. It provides the netw
   - Tested with gcc 4.8.4
   - Tested with clang 5.0.0
   - Tested only on Linux. No support certified for Mac and Windows
-- Dependencies (downloaded and placed in `extern` by CMake)
+- Dependencies (already in the repo and built by CMake)
   - [GoogleTest](https://github.com/google/googletest)
   - [MessagePack](https://msgpack.org/)
   - [ZeroMQ CPP](https://zeromq.org/languages/cplusplus/)
