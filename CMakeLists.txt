@@ -23,9 +23,9 @@ message(STATUS "BUILD_TYPE for ${PROJECT_NAME}: ${CMAKE_BUILD_TYPE}")
 
 # Dependencies
 message(STATUS "Adding dependencies for ${PROJECT_NAME}")
-include_directories("${PROJECT_SOURCE_DIR}/extern/libzmq-4.3.3/include") # Header only
+include_directories("${PROJECT_SOURCE_DIR}/extern/cppzmq-4.7.1/include") # Header only
 include_directories("${PROJECT_SOURCE_DIR}/extern/msgpack-c-3.3.0/include") # Header only
-add_subdirectory("${PROJECT_SOURCE_DIR}/extern/cppzmq-4.7.1")
+add_subdirectory("${PROJECT_SOURCE_DIR}/extern/libzmq-4.3.3")
 
 
 # Library
@@ -33,6 +33,7 @@ message(STATUS "Building static library for ${PROJECT_NAME}")
 include_directories("${PROJECT_SOURCE_DIR}/include/")
 file(GLOB_RECURSE srcLibFiles "${PROJECT_SOURCE_DIR}/src/*.cpp")
 add_library(${PROJECT_NAME}-lib STATIC ${srcLibFiles})
+target_link_libraries(${PROJECT_NAME}-lib libzmq-static)
 
 
 # Tests
@@ -45,7 +46,7 @@ if(COLLABSERVER_TESTS)
     include_directories("${PROJECT_SOURCE_DIR}/include/")
     file(GLOB_RECURSE srcTestFiles "${PROJECT_SOURCE_DIR}/tests/*.cpp")
     add_executable(${PROJECT_NAME}-tests ${srcTestFiles})
-    target_link_libraries(${PROJECT_NAME}-tests ${PROJECT_NAME}-lib zmq)
+    target_link_libraries(${PROJECT_NAME}-tests ${PROJECT_NAME}-lib)
 
     # Googletest dependency
     include_directories("${PROJECT_SOURCE_DIR}/extern/googletest/googletest/include/")
