@@ -23,15 +23,8 @@ endif()
 
 # Dependencies
 add_subdirectory("${PROJECT_SOURCE_DIR}/extern/googletest-1.10.0")
-
-set(CPPZMQ_BUILD_TESTS OFF)
 add_subdirectory("${PROJECT_SOURCE_DIR}/extern/cppzmq-4.7.1")
-
-set(ZMQ_BUILD_TESTS OFF)
-set(WITH_PERF_TOOL OFF)
 add_subdirectory("${PROJECT_SOURCE_DIR}/extern/libzmq-4.3.3")
-
-set(MSGPACK_CXX11 ON)
 add_subdirectory("${PROJECT_SOURCE_DIR}/extern/msgpack-c-3.3.0")
 
 

@@ -1518,7 +1518,7 @@ if(BUILD_SHARED)
       proxy_thr)
 
   if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug") # Why?
-    option(WITH_PERF_TOOL "Build with perf-tools" ON)
+    option(WITH_PERF_TOOL "Build with perf-tools" OFF)
   else()
     option(WITH_PERF_TOOL "Build with perf-tools" OFF)
   endif()

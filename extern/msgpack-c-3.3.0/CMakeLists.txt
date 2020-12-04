@@ -23,7 +23,7 @@ SET (libdir "\${exec_prefix}/lib")
 SET (includedir "\${prefix}/include")
 SET (GNUCXX_STD_SUPPORT_VERSION "4.3")
 
-OPTION (MSGPACK_CXX11 "Using c++11 compiler" OFF)
+OPTION (MSGPACK_CXX11 "Using c++11 compiler" ON)
 OPTION (MSGPACK_32BIT "32bit compile" OFF)
 OPTION (MSGPACK_BOOST "Using boost libraries" OFF)
 
@@ -97,7 +97,7 @@ IF (MSGPACK_32BIT)
    ENDIF ()
 ENDIF ()
 
-OPTION (MSGPACK_BUILD_EXAMPLES "Build msgpack examples." ON)
+OPTION (MSGPACK_BUILD_EXAMPLES "Build msgpack examples." OFF)
 
 IF (MSGPACK_BOOST)
    SET (CMAKE_CXX_FLAGS "-DMSGPACK_USE_BOOST ${CMAKE_CXX_FLAGS}")
