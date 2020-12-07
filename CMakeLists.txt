@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 project(collabserver-network)
-message(STATUS "[${PROJECT_NAME}] Building project")
+message(STATUS "Building project ${PROJECT_NAME}")
 
 if("${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_BINARY_DIR}")
     message(FATAL_ERROR "in-source build not allowed. Use another directory.")
