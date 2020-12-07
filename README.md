@@ -39,10 +39,9 @@ This is an internal library for the CollabServer framework. It provides the netw
 
 ```bash
 # Build the tests
-
 mkdir build
 cd build
-cmake -DCOLLABSERVER_TESTS=ON ..
+cmake -DCOLLABSERVER_NETWORK_TESTS=ON ..
 make
 make runTests
 
@@ -52,7 +51,7 @@ make runTests
 
 | CMake option | Description |
 | --- | --- |
-| COLLABSERVER_TESTS | (ON / OFF) Set ON to build unit tests |
+| COLLABSERVER_NETWORK_TESTS | (ON / OFF) Set ON to build unit tests |
 | CMAKE_BUILD_TYPE | Debug, Release, RelWithDebInfo, MinSizeRel |
 
 ## Generate Documentation

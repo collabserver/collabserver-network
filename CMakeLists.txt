@@ -37,8 +37,8 @@ target_link_libraries(${PROJECT_NAME}-lib libzmq-static)
 
 
 # Tests
-option(COLLABSERVER_TESTS "Build tests" OFF)
-if(COLLABSERVER_TESTS)
+option(COLLABSERVER_NETWORK_TESTS "Build tests" OFF)
+if(COLLABSERVER_NETWORK_TESTS)
     message(STATUS "Building tests for ${PROJECT_NAME}")
     enable_testing()
 
