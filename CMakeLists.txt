@@ -23,7 +23,7 @@ message(STATUS "BUILD_TYPE for ${PROJECT_NAME}: ${CMAKE_BUILD_TYPE}")
 
 # Dependencies
 message(STATUS "Adding dependencies for ${PROJECT_NAME}")
-include_directories("${PROJECT_SOURCE_DIR}/extern/cppzmq-4.7.1/include") # Header only
+include_directories("${PROJECT_SOURCE_DIR}/extern/cppzmq-4.7.1") # Header only
 include_directories("${PROJECT_SOURCE_DIR}/extern/msgpack-c-3.3.0/include") # Header only
 add_subdirectory("${PROJECT_SOURCE_DIR}/extern/libzmq-4.3.3")
 
